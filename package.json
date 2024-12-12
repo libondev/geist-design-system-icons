@@ -1,0 +1,35 @@
+{
+  "name": "gds-icons",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Geist design system icons maintained by the community.",
+  "author": "Libon <bon.li@outlook.com>",
+  "license": "ISC",
+  "keywords": [
+    "geist design system",
+    "geist",
+    "icons",
+    "svg"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.2",
+    "vite-plugin-dts": "^4.3.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.11.2",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
