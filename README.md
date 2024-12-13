@@ -106,6 +106,6 @@ console.log(fullIcons)
 ```
 
 ## TODO
-- [ ] Vue auto import component dts type
-- [ ] React auto/manual import component dts type
+- [ ] auto import component dts type
+- [ ] React auto import component dts type
 - [ ] React component attributes type
