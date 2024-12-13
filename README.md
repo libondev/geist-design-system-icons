@@ -1,4 +1,7 @@
 # Geist Design System Icons
+Geist design system icons maintained by the community.
+
+Provide cross-framework support, whether it is vanilla/vue/react. :)
 
 ## Install
 ```sh
@@ -34,7 +37,7 @@ import { AccessibilityIcon } from 'gdsi/vue'
 ```
 
 ### React
-```ts
+```tsx
 import { AccessibilityIcon } from 'gdsi/react'
 
 export default function App() {

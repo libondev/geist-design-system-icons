@@ -1,30 +1,24 @@
 import { AccessibilityIcon } from 'gdsi/react'
-import { useState } from 'react'
+
+import accessibility from 'gdsi/svg/accessibility.svg?raw'
+import { useEffect, useRef } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const htmlRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (htmlRef.current) {
+      htmlRef.current.innerHTML = accessibility
+    }
+  }, [accessibility])
 
   return (
     <>
       <h1>Vite + React</h1>
-      <AccessibilityIcon width="1em" />
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is
-          {' '}
-          {count}
-        </button>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div style={{ width: '5em', height: '5em' }} ref={htmlRef}></div>
+
+      <AccessibilityIcon width="5em" />
     </>
   )
 }
