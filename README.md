@@ -93,16 +93,16 @@ export default function App() {
 ```ts
 import svgIconRaw from 'gdsi/svg/accessibility.svg?raw'
 
-console.log(svgIconRaw)
+console.log(svgIconRaw) // '<svg height="16" stroke-linejoin="round" ...'
 ```
 
-### Full
+### Full SVG
 Note that this method may lead to a large build volume, because it can't do tree-shaking.
 
 ```ts
 import fullIcons from 'gdsi/icons'
 
-console.log(fullIcons)
+console.log(fullIcons) // { "AccessibilityIcon": "<svg height="16" stroke-linejoin="round" ..." }
 ```
 
 ## TODO
