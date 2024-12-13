@@ -1,7 +1,7 @@
 # Geist Design System Icons
 Geist design system icons maintained by the community.
 
-Provide cross-framework support, whether it is vanilla/vue/react. :)
+Provide cross-framework support, whether it is `vanilla`/`vue`/`react`. :)
 
 ## Install
 ```sh
@@ -12,7 +12,7 @@ npm i gdsi
 
 ## Usage
 
-### Vanilla(native)
+### Vanilla(nativeJS)
 
 ```ts
 import { AccessibilityIcon } from 'gdsi'
