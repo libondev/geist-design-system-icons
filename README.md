@@ -35,7 +35,7 @@ export default defineConfig({
       resolvers: [
         IconResolver({
           type: 'vue', // 'vue' | 'react' | 'vanilla'
-          prefix: 'Gsd', // default 'Gsd'
+          prefix: 'Gds', // default 'Gds'
         })
       ],
     }),
@@ -46,7 +46,7 @@ export default defineConfig({
 ```vue
 <template>
   <div>
-    <AccessibilityIcon />
+    <GdsAccessibility />
   </div>
 </template>
 ```
