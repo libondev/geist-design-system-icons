@@ -5,12 +5,11 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 const inputFiles = Object.fromEntries(
-  glob.sync('./src/**/*.ts').map(path => [
+  glob.sync('./src/*.ts').map(path => [
     path.replace(/\.\/src\/(.*?)\.ts/, '$1'),
     fileURLToPath(new URL(path, import.meta.url)),
   ]),
 )
-console.debug('🍉vite.config.ts:6/(inputFiles):\n ', inputFiles)
 
 export default defineConfig({
   build: {
@@ -19,6 +18,7 @@ export default defineConfig({
     reportCompressedSize: false,
     rollupOptions: {
       preserveEntrySignatures: 'strict',
+      external: ['vue', 'react'],
       input: inputFiles,
       output: {
         dir: 'dist',

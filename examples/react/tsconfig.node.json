@@ -1,21 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
     "moduleDetection": "force",
-    "useDefineForClassFields": true,
     "module": "ESNext",
-
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmit": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "scripts", "env.d.ts"]
+  "include": ["vite.config.ts"]
 }

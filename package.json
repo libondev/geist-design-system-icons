@@ -1,5 +1,5 @@
 {
-  "name": "gds-icons",
+  "name": "gdsi",
   "type": "module",
   "version": "0.0.1",
   "description": "Geist design system icons maintained by the community.",
@@ -12,24 +12,46 @@
     "svg"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./*": "./dist/*"
+    ".": {
+      "types": "./dist/vanilla.d.ts",
+      "default": "./dist/vanilla.js"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "default": "./dist/vue.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
+    },
+    "./*": "./dist/*",
+    "./svg/*": "./svg/*"
   },
-  "main": "dist/index.js",
+  "main": "dist/vanilla.js",
+  "types": "./dist/vanilla.d.ts",
+  "files": [
+    "dist",
+    "svg"
+  ],
   "scripts": {
+    "dev": "tsx --watch scripts/gen.ts",
+    "gen": "tsx scripts/gen.ts",
+    "prebuild": "npm run gen vue react vanilla",
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "dependencies": {
-    "fast-glob": "^3.3.2",
-    "vite-plugin-dts": "^4.3.0"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",
     "@types/node": "^22.10.2",
+    "@types/react": "^19.0.1",
     "eslint": "^9.16.0",
+    "fast-glob": "^3.3.2",
+    "react": "^19.0.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "vite-plugin-dts": "^4.3.0",
+    "vue": "^3.5.13"
   }
 }
