@@ -21,14 +21,14 @@ function isDirectoryDirty(_path: string) {
 function updateMetadata(modifiedAt: string) {
   metadata.lastModified = modifiedAt
 
-  fs.writeFileSync('../src/core/_metadata.json', `${JSON.stringify(metadata, null, 2)}\n`)
+  fs.writeFileSync('./scripts/_metadata.json', `${JSON.stringify(metadata, null, 2)}\n`)
 }
 
 function updateCachedIcons() {
   const newContent: SVGMap = Object.fromEntries(
     glob.sync('svg/*.svg', { cwd: process.cwd() }).map((svg) => {
       const fileName = svg.replace(/svg\/(.*?)\.svg/, '$1')
-      const camelCaseName = fileName.replace(/-/g, (_, index) => (index === 0 ? '' : '-'))
+      const camelCaseName = fileName.replace(/-(\w)/g, (_, $) => $.toUpperCase())
       const svgName = `${camelCaseName.slice(0, 1).toUpperCase() + camelCaseName.slice(1)}Icon`
 
       const svgContent = fs.readFileSync(svg, 'utf-8').replace(/\r\n\s*/g, '')
@@ -37,7 +37,7 @@ function updateCachedIcons() {
     }),
   )
 
-  fs.writeFileSync('../src/core/_cached.json', `${JSON.stringify(newContent, null, 2)}\n`)
+  fs.writeFileSync('./scripts/_cached.json', `${JSON.stringify(newContent, null, 2)}\n`)
 
   return newContent
 }
