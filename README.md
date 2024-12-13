@@ -3,6 +3,9 @@ Geist design system icons maintained by the community.
 
 Provide cross-framework support, whether it is `vanilla`/`vue`/`react`. :)
 
+> [!IMPORTANT]
+> This project is purely out of personal love for `Geist Design System` and does not involve any commercial nature. If you are offended, please contact me and I will deal with it as soon as possible.
+
 ## Install
 ```sh
 pnpm i gdsi
