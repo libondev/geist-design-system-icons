@@ -51,3 +51,18 @@ export default function App() {
   )
 }
 ```
+
+### Raw SVG
+
+```ts
+import svgIconRaw from 'gdsi/svg/accessibility.svg?raw'
+
+console.log(svgIconRaw)
+```
+
+### Full
+```ts
+import fullIcons from 'gdsi/icons'
+
+console.log(fullIcons)
+```

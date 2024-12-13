@@ -24,6 +24,10 @@
       "types": "./dist/react.d.ts",
       "default": "./dist/react.js"
     },
+    "./icons": {
+      "types": "./dist/icons.d.ts",
+      "default": "./dist/icons.js"
+    },
     "./svg/*": "./svg/*",
     "./*": "./dist/*"
   },
