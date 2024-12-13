@@ -28,6 +28,10 @@
       "types": "./dist/icons.d.ts",
       "default": "./dist/icons.js"
     },
+    "./resolver": {
+      "types": "./dist/resolver.d.ts",
+      "default": "./dist/resolver.js"
+    },
     "./svg/*": "./svg/*",
     "./*": "./dist/*"
   },

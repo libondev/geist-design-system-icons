@@ -1,10 +1,15 @@
 # Geist Design System Icons
 Geist design system icons maintained by the community.
 
-Provide cross-framework support, whether it is `vanilla`/`vue`/`react`. :)
-
 > [!IMPORTANT]
 > This project is purely out of personal love for `Geist Design System` and does not involve any commercial nature. If you are offended, please contact me and I will deal with it as soon as possible.
+
+## Feature
+- Complete tree-shaking support
+- Cross-framework support. (vue/react/vanilla)
+- Auto import component
+- Auto import component dts type(`coming`)
+- More...
 
 ## Install
 ```sh
@@ -14,6 +19,37 @@ npm i gdsi
 ```
 
 ## Usage
+
+### Auto Import
+use `unplugin-vue-components` to auto import icons.
+> `react` please use `unplugin-auto-import` to auto import icons.
+
+```ts
+import IconResolver from 'gdsi/resolver'
+import vueComponent from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  plugins: [
+    vueComponent({
+      resolvers: [
+        IconResolver({
+          type: 'vue', // 'vue' | 'react' | 'vanilla'
+          prefix: 'Gsd', // default 'Gsd'
+        })
+      ],
+    }),
+  ],
+})
+```
+
+```vue
+<template>
+  <div>
+    <AccessibilityIcon />
+  </div>
+</template>
+```
 
 ### Vanilla(nativeJS)
 
@@ -61,8 +97,15 @@ console.log(svgIconRaw)
 ```
 
 ### Full
+Note that this method may lead to a large build volume, because it can't do tree-shaking.
+
 ```ts
 import fullIcons from 'gdsi/icons'
 
 console.log(fullIcons)
 ```
+
+## TODO
+- [ ] Vue auto import component dts type
+- [ ] React auto/manual import component dts type
+- [ ] React component attributes type
