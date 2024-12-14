@@ -104,8 +104,3 @@ import fullIcons from 'gdsi/icons'
 
 console.log(fullIcons) // { "AccessibilityIcon": "<svg height="16" stroke-linejoin="round" ..." }
 ```
-
-## TODO
-- [ ] auto import component dts type
-- [ ] React auto import component dts type
-- [ ] React component attributes type
