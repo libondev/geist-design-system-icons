@@ -2,9 +2,9 @@
 <script setup lang="ts">
 // import fullIcons from 'gdsi/icons'
 
-// import { AccessibilityIcon } from 'gdsi/vue'
+// import { defineComponent, h, onMounted, useTemplateRef } from 'vue'
 
-// import { onMounted, useTemplateRef } from 'vue'
+// import { AccessibilityIcon } from 'gdsi/vue'
 
 // const iconsRef = useTemplateRef<HTMLDivElement>('iconsRef')
 
@@ -12,7 +12,7 @@
 //   const fragment = document.createDocumentFragment()
 
 //   Object.entries(fullIcons).forEach(([name, value]) => {
-//     const div = Object.assign(document.createElement('div'), { className: 'icon-wrapper' })
+//     const div = Object.assign(document.createElement('div'), { className: 'icon-item' })
 
 //     div.innerHTML = `${value}<span class="icon-name">${name}</span>`
 
@@ -24,19 +24,16 @@
 </script>
 
 <template>
-  <div>
-    <h1>Vite + Vue</h1>
+  <h1>Vite + Vue</h1>
 
-    <!-- manual import -->
-    <!-- <AccessibilityIcon width="5em" /> -->
+  <!-- manual import -->
+  <!-- <AccessibilityIcon width="5em" /> -->
 
-    <!-- auto import -->
-    <IconFilter />
-    <icon-filter />
-    <IconZeroConfig />
+  <!-- auto import -->
+  <icon-filter />
+  <IconZeroConfig />
 
-    <!-- <div ref="iconsRef" class="all-icons" /> -->
-  </div>
+  <!-- <div ref="iconsRef" class="all-icons" /> -->
 </template>
 
 <style>
@@ -46,7 +43,7 @@
   gap: 16px;
 }
 
-.icon-wrapper {
+.icon-item {
   width: 120px;
   height: 120px;
   display: flex;
