@@ -8,7 +8,7 @@ Geist design system icons maintained by the community.
 - Complete tree-shaking support
 - Cross-framework support. (vue/react/vanilla)
 - Auto import component
-- Auto import component dts type(`coming`)
+- Auto import component dts type
 - More...
 
 ## Install
