@@ -38,7 +38,7 @@ export default defineConfig({
     dts({
       entryRoot: 'src',
       cleanVueFileName: true,
-      exclude: [],
+      exclude: ['./scripts'],
     }),
   ],
 

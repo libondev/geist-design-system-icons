@@ -9,8 +9,12 @@
     "geist design system",
     "geist",
     "icons",
-    "svg"
+    "svg",
+    "vue",
+    "react",
+    "vanilla"
   ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/vanilla.d.ts",
@@ -42,8 +46,7 @@
     "svg"
   ],
   "scripts": {
-    "dev": "tsx --watch scripts/gen.ts",
-    "gen": "tsx scripts/gen.ts",
+    "gen": "tsx ./scripts/gen.ts",
     "prebuild": "npm run gen vue react vanilla",
     "build": "vite build",
     "lint": "eslint .",
@@ -53,6 +56,7 @@
     "@antfu/eslint-config": "^3.11.2",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.1",
+    "camelcase": "^8.0.0",
     "cheerio": "^1.0.0",
     "eslint": "^9.16.0",
     "fast-glob": "^3.3.2",

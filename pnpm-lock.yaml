@@ -17,6 +17,9 @@ importers:
       '@types/react':
         specifier: ^18.3.1
         version: 18.3.16
+      camelcase:
+        specifier: ^8.0.0
+        version: 8.0.0
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
