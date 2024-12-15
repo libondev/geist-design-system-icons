@@ -41,14 +41,22 @@
   },
   "main": "dist/vanilla.js",
   "types": "./dist/vanilla.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
   "files": [
     "dist",
     "svg"
   ],
   "scripts": {
-    "gen": "tsx ./scripts/gen.ts",
-    "prebuild": "npm run gen vue react vanilla",
-    "build": "vite build",
+    "gen": "tsx ./scripts/gen.ts svg vue react",
+    "build": "tsup",
+    "postbuild": "node scripts/fix-dts.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -56,16 +64,14 @@
     "@antfu/eslint-config": "^3.11.2",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.1",
-    "camelcase": "^8.0.0",
     "cheerio": "^1.0.0",
     "eslint": "^9.16.0",
     "fast-glob": "^3.3.2",
     "react": "^18.3.1",
+    "tsup": "^8.3.5",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "unplugin-vue-components": "^0.27.5",
-    "vite": "^6.0.3",
-    "vite-plugin-dts": "^4.3.0",
     "vue": "^3.5.13"
   }
 }

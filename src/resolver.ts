@@ -4,9 +4,9 @@ import { name } from '../package.json' assert { type: 'json' }
 export interface Options {
   /**
    * What type of components are expected
-   * @default 'vanilla'
+   * @default 'svg'
    */
-  type?: 'vanilla' | 'svg' | 'vue' | 'react'
+  type?: 'svg' | 'vue' | 'react'
 
   /**
    * @default 'Gsd'
@@ -15,7 +15,7 @@ export interface Options {
 }
 
 export default function IconsResolver({
-  type = 'vanilla',
+  type = 'svg',
   prefix = 'Gds',
 }: Options = {}): ComponentResolver {
   const regex = new RegExp(`^${prefix}[A-Z]`)
@@ -30,7 +30,7 @@ export default function IconsResolver({
 
       return {
         name: importName,
-        from: `${name}/${type}.js`,
+        from: `${name}/${type}`,
       }
     },
   }

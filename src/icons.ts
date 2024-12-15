@@ -1,3 +1,1 @@
-import cachedIcons from '../scripts/_cached.json' with { type: 'json' }
-
-export default cachedIcons
+export { default } from '../scripts/_cached.json' assert { type: 'json' }
