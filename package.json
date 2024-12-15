@@ -12,7 +12,8 @@
     "svg",
     "vue",
     "react",
-    "vanilla"
+    "vanilla",
+    "unplugin"
   ],
   "sideEffects": false,
   "exports": {
@@ -51,6 +52,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "unplugin": "^1.12.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",
