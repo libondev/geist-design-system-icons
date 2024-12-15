@@ -3,6 +3,7 @@ import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
+import camelCase from 'camelcase'
 import glob from 'fast-glob'
 
 import cachedIcons from './_cached.json' assert { type: 'json' }
@@ -13,7 +14,6 @@ type SVGMap = Record<string, string>
 const writeTypes = process.argv.slice(2)
 
 const QUOTE_REGEX = /^"|"$/g
-const INTEGER_REGEX = /^\d+$/
 const BREAK_PROPS_REGEX = /\s+(?=\w+(?:-\w+)*=)/
 const SVG_REGEX = /<svg\s?([^>]*)>([\s\S]*?)<\/svg>/
 
@@ -31,17 +31,14 @@ function updateMetadata(modifiedAt: string) {
 
 function updateCachedIcons() {
   const RENAME_REGEX = /svg\/(.*?)\.svg/
-  const CAMEL_CASE_REGEX = /-(\w)/g
 
   const newContent: SVGMap = Object.fromEntries(
     glob.sync('svg/*.svg', { cwd: process.cwd() }).map((svg) => {
-      const fileName = svg.replace(RENAME_REGEX, '$1')
-      const camelCaseName = fileName.replace(CAMEL_CASE_REGEX, (_, $) => $.toUpperCase())
-      const name = `${camelCaseName.slice(0, 1).toUpperCase() + camelCaseName.slice(1)}Icon`
+      const iconName = `${camelCase(svg.replace(RENAME_REGEX, '$1'), { pascalCase: true })}Icon`
 
-      const content = fs.readFileSync(svg, 'utf-8')
+      const contents = fs.readFileSync(svg, 'utf-8')
 
-      return [name, content]
+      return [iconName, contents]
     }),
   )
 
@@ -61,12 +58,10 @@ const transformers = {
           const [key, ...values] = attr.split('=')
           const value = values.join('=').replace(QUOTE_REGEX, '')
 
-          const isNumeric = INTEGER_REGEX.test(value)
-
-          return `"${key}":${isNumeric ? value : `"${value}"`}`
+          return `"${key}":"${value}"`
         })
 
-      fileContent += `export const ${name} = defineComponent(() => h("svg", { innerHTML:'${children}',${props} }), { name:'${name}' })\n`
+      fileContent += `export const ${name} = defineComponent((_,c) => { const $ = h("svg", { innerHTML:'${children}',${props},...c.attrs });return () => $ }, { name:'${name}' })\n`
     }
 
     return fileContent
@@ -81,9 +76,8 @@ const transformers = {
         .map((attr) => {
           const [key, ...values] = attr.split('=')
           const value = values.join('=').replace(QUOTE_REGEX, '')
-          const camelCase = key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 
-          if (camelCase === 'style') {
+          if (key === 'style') {
             const css = value.split(';').reduce((acc, cur) => {
               const [key, value] = cur.split(':')
 
@@ -93,20 +87,10 @@ const transformers = {
             return `style:{${css}}`
           }
 
-          // 处理数字类型的值
-          const isNumeric = INTEGER_REGEX.test(value)
-          // 使用冒号而不是等号
-          return `${camelCase}:${isNumeric ? value : `"${value}"`}`
+          return `${camelCase(key)}:"${value}"`
         })
 
-      const processedChildren = children
-        .replace(/([a-z]+-[a-z]+)=/g, (match) => {
-          return match.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
-        })
-        .replace(/\s+/g, ' ')
-        .trim()
-
-      fileContent += `export const ${name}: MF = memo(props => createElement("svg", { ${props},...props,dangerouslySetInnerHTML:{__html:'${processedChildren}'} }))`
+      fileContent += `export const ${name}: MF = memo(p => createElement("svg", { ${props},dangerouslySetInnerHTML:{__html:'${children}'},...p }))`
       fileContent += `\n${name}.displayName = '${name}'\n\n`
     }
 

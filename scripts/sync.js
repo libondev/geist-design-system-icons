@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import * as cheerio from 'cheerio'
 
-const fallbackColors: Record<string, string> = {
+const fallbackColors = {
   '--ds-red-700': '#e5484d',
   '--ds-blue-900': '#0068d6',
   '--ds-teal-700': '#12a594',
@@ -17,7 +17,7 @@ const fallbackColors: Record<string, string> = {
   '--ds-background-100': '#ffffff',
 }
 
-function processSVG(svg: string) {
+function processSVG(svg) {
   try {
     const processedSvg = svg
       .replace(/\n/g, '')
