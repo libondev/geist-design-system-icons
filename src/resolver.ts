@@ -1,5 +1,5 @@
 import type { ComponentResolver } from 'unplugin-vue-components'
-import { name } from '../package.json' assert { type: 'json' }
+import { name } from '../package.json'
 
 export interface Options {
   /**

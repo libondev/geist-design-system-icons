@@ -81,8 +81,9 @@ const transformers = {
     return fileContent
   },
   async react(fileHead: string, svgMap: SVGMap) {
-    let fileContent = `${fileHead}import { createElement as c, memo as m, type MemoExoticComponent, type SVGProps, type ReactSVGElement } from 'react'\n`
-    fileContent += `type MF = MemoExoticComponent<(props: SVGProps<any>) => ReactSVGElement>\n\n`
+    let fileContent = `${fileHead}import React,{ type NamedExoticComponent, type SVGProps } from 'react'\n`
+    // fileContent += `type MF = (props: SVGProps<SVGSVGElement>) => JSX.Element\n\n`
+    fileContent += `type MF = NamedExoticComponent<SVGProps<SVGSVGElement>>\n\n`
 
     for (const [name, content] of Object.entries(svgMap)) {
       const [, attributes, children] = content.match(SVG_REGEX) || []
@@ -104,7 +105,7 @@ const transformers = {
           return `${camelCase(key)}:"${value}"`
         })
 
-      fileContent += `export const ${name}: MF = m(p => c("svg", { ${props},dangerouslySetInnerHTML:{__html:'${children}'},...p }))`
+      fileContent += `export const ${name}: MF = React.memo(p => React.createElement("svg", { ${props},dangerouslySetInnerHTML:{__html:'${children}'},...p }))`
       fileContent += `\n${name}.displayName = '${name}'\n\n`
     }
 
