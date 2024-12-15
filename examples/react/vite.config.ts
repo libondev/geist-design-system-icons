@@ -5,6 +5,13 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    minify: true,
+    rollupOptions: {
+      treeshake: true,
+    },
+  },
+
   plugins: [
     react(),
     autoImport({
@@ -12,7 +19,7 @@ export default defineConfig({
       resolvers: [
         IconResolver({
           type: 'react',
-          prefix: 'I',
+          prefix: 'Icon',
         }),
       ],
     }),

@@ -15,5 +15,8 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "auto-imports.d.ts"
+  ]
 }
