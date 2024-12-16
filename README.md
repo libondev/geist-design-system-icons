@@ -24,7 +24,7 @@ The easiest way is to use auto-imports:
 - For Vue: Use `unplugin-vue-components`
 - For React: Use `unplugin-auto-import`
 
-> 💡 Remember to add `components.d.ts`/`auto-imports.d.ts` to your `tsconfig.json` includes
+> 💡 Remember to add `components.d.ts` / `auto-imports.d.ts` to your `tsconfig.json` includes
 
 ```ts
 import IconResolver from 'gdsi/resolver'
@@ -36,8 +36,17 @@ export default defineConfig({
     vueComponent({
       resolvers: [
         IconResolver({
-          type: 'vue', // 'vue' | 'react' | 'vanilla'
-          prefix: 'Gds', // default 'Gds'
+          /**
+           * import type
+           * @type {'svg' | 'vue' | 'react'}
+           * @defaults 'svg'
+           */
+          type: 'vue',
+          /**
+           * auto import prefix
+           * @defaults 'Gds'
+           */
+          prefix: 'Gds',
         })
       ],
     }),
@@ -58,7 +67,7 @@ Then use it in your components:
 ### Vanilla JavaScript
 
 ```ts
-import { AccessibilityIcon } from 'gdsi'
+import { AccessibilityIcon } from 'gdsi/svg'
 
 const app = document.querySelector('#app')
 
@@ -70,16 +79,16 @@ Need all icons? You can import the full set:
 
 ```ts
 // Note: This method doesn't support tree-shaking
-import icons from 'gdsi/icons'
+import * as icons from 'gdsi/svg'
 
-console.log(icons) // { "AccessibilityIcon": "<svg height="16" stroke-linejoin="round" ..." }
+console.log(icons) // { "AccessibilityIcon": "<svg height=\"16\" stroke-linejoin=\"round\" ..." }
 ```
 
 ### Framework-specific Usage
 
 #### Vue 3
 
-```vue
+```html
 <script setup>
 import { AccessibilityIcon } from 'gdsi/vue'
 </script>
@@ -110,7 +119,25 @@ export default function App() {
 Need just the SVG string? Use this:
 
 ```ts
-import svgIcon from 'gdsi/svg/accessibility.svg?raw'
+// Source file use `-` as a connector
+import accessibilityUnread from 'gdsi/raw/accessibility-unread.svg?raw'
+import accessibility from 'gdsi/raw/accessibility.svg?raw'
+```
+
+### Bundler Optimize
+
+#### Vite
+If you are using vite, you can use prebuilt for optimization, this will greatly improve the performance of the first screen you manually import. (If `unplugin-auto-import`|`unplugin-vue-components` is used, it can be ignored.)
+
+```ts
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  // ...
+  optimizeDeps: {
+    include: ['gdsi/react'], // or ['gdsi/vue'] | ['gdsi/svg']
+  },
+})
 ```
 
 enjoy~

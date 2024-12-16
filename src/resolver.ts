@@ -26,11 +26,13 @@ export default function IconsResolver({
       if (!regex.test(icon))
         return
 
-      const importName = `${icon.replace(prefix, '')}Icon`
+      const rawName = icon.replace(prefix, '')
+
+      const importName = `${rawName}Icon`
 
       return {
         name: importName,
-        from: `${name}/${type}`,
+        from: `${name}/${type}/${rawName}.js`,
       }
     },
   }

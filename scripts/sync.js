@@ -21,6 +21,7 @@ function processSVG(svg) {
   try {
     const processedSvg = svg
       .replace(/\n/g, '')
+      .replace(/\r\n/g, '')
       .replace(/>(\s)+</g, '><')
       .replace(/style=""/g, '')
       .replace(/var\((--ds-[^,)]+)\)/g, (_, variable) => {

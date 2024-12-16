@@ -16,31 +16,39 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/vanilla.d.ts",
-      "default": "./dist/vanilla.js"
+    "./svg": {
+      "types": "./dist/svg/index.d.ts",
+      "default": "./dist/svg/index.js"
     },
     "./vue": {
-      "types": "./dist/vue.d.ts",
-      "default": "./dist/vue.js"
+      "types": "./dist/vue/index.d.ts",
+      "default": "./dist/vue/index.js"
     },
     "./react": {
-      "types": "./dist/react.d.ts",
-      "default": "./dist/react.js"
-    },
-    "./icons": {
-      "types": "./dist/icons.d.ts",
-      "default": "./dist/icons.js"
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
     },
     "./resolver": {
       "types": "./dist/resolver.d.ts",
       "default": "./dist/resolver.js"
     },
-    "./svg/*": "./svg/*",
+    "./svg/*": {
+      "types": "./dist/svg/*",
+      "default": "./dist/svg/*"
+    },
+    "./vue/*": {
+      "types": "./dist/vue/*",
+      "default": "./dist/vue/*"
+    },
+    "./react/*": {
+      "types": "./dist/react/*",
+      "default": "./dist/react/*"
+    },
+    "./raw/*": "./svg/*",
     "./*": "./dist/*"
   },
-  "main": "dist/vanilla.js",
-  "types": "./dist/vanilla.d.ts",
+  "main": "dist/svg/index.js",
+  "types": "./dist/svg/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
@@ -56,7 +64,6 @@
   "scripts": {
     "gen": "tsx ./scripts/gen.ts svg vue react",
     "build": "vite build",
-    "postbuild": "node scripts/fix-dts.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
