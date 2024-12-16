@@ -54,8 +54,8 @@
     "svg"
   ],
   "scripts": {
-    "prebuild": "tsx ./scripts/gen.ts svg vue react",
-    "build": "tsup",
+    "gen": "tsx ./scripts/gen.ts svg vue react",
+    "build": "vite build",
     "postbuild": "node scripts/fix-dts.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -68,10 +68,11 @@
     "eslint": "^9.16.0",
     "fast-glob": "^3.3.2",
     "react": "^18.3.1",
-    "tsup": "^8.3.5",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "unplugin-vue-components": "^0.27.5",
+    "vite": "^6.0.1",
+    "vite-plugin-dts": "^4.3.0",
     "vue": "^3.5.13"
   }
 }
