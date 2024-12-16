@@ -1,8 +1,8 @@
-import Alpha from 'gdsi/raw/alpha.svg?raw'
-
 import { AcronymJsIcon } from 'gdsi/react'
 
 import { AccessibilityIcon } from 'gdsi/react/Accessibility.js'
+
+import { AlphaIcon } from 'gdsi/svg'
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
         {/* single import */}
         <AccessibilityIcon />
 
-        {/* raw svg */}
-        <span dangerouslySetInnerHTML={{ __html: Alpha }} />
+        {/* svg string */}
+        <span dangerouslySetInnerHTML={{ __html: AlphaIcon }} />
       </div>
     </>
   )

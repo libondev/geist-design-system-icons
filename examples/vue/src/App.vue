@@ -1,6 +1,6 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-import Alpha from 'gdsi/raw/alpha.svg?raw'
+import { AlphaIcon } from 'gdsi/svg'
 
 import { AcronymJsIcon } from 'gdsi/vue'
 
@@ -21,6 +21,6 @@ import { AccessibilityIcon } from 'gdsi/vue/Accessibility.js'
     <AccessibilityIcon />
 
     <!-- raw svg -->
-    <span v-html="Alpha" />
+    <span v-html="AlphaIcon" />
   </div>
 </template>

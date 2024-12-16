@@ -1,4 +1,3 @@
-import ZeroConfigIcon from 'gdsi/raw/zero-config.svg?raw'
 import { AccessibilityIcon } from 'gdsi/svg'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -12,8 +11,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div style="width:3em">
         ${GdsZeroConfig}
       </div>
-
-      ${ZeroConfigIcon}
     </div>
   </div>
 `
