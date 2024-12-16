@@ -113,17 +113,6 @@ export default function App() {
 }
 ```
 
-### Advanced Usage
-
-#### Raw SVG Import
-Need just the SVG string? Use this:
-
-```ts
-// Source file use `-` as a connector
-import accessibilityUnread from 'gdsi/raw/accessibility-unread.svg?raw'
-import accessibility from 'gdsi/raw/accessibility.svg?raw'
-```
-
 ### Bundler Optimize
 
 #### Vite

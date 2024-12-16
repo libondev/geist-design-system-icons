@@ -44,7 +44,6 @@
       "types": "./dist/react/*",
       "default": "./dist/react/*"
     },
-    "./raw/*": "./svg/*",
     "./*": "./dist/*"
   },
   "main": "dist/svg/index.js",
@@ -58,8 +57,7 @@
     }
   },
   "files": [
-    "dist",
-    "svg"
+    "dist"
   ],
   "scripts": {
     "gen": "tsx ./scripts/gen.ts svg vue react",
