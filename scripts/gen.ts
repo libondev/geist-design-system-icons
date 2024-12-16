@@ -35,7 +35,7 @@ function updateCachedIcons() {
     glob.sync('svg/*.svg', { cwd: process.cwd() }).map((svg) => {
       const iconName = camelCase(svg.replace(RENAME_REGEX, '$1'), { pascalCase: true })
 
-      const contents = fs.readFileSync(svg, 'utf-8')
+      const contents = removeLineBreaks(fs.readFileSync(svg, 'utf-8'))
 
       return [iconName, contents]
     }),
@@ -52,6 +52,10 @@ function camelCase(str: string, options: { pascalCase: boolean } = { pascalCase:
   return pascalCase ? str.replace(/(?:^|[-_])(\w)/g, (_, char) => char.toUpperCase()) : str.replace(/-([a-z])/g, (_, char) => char.toUpperCase())
 }
 
+function removeLineBreaks(str: string) {
+  return str.replace(/\r/g, '').replace(/\n/g, '')
+}
+
 const transformers = {
   svg: {
     filepath: 'svg',
@@ -63,7 +67,7 @@ const transformers = {
         const iconName = `${name}Icon`
 
         mainFileContent += `export { ${iconName} } from './${name}'\n`
-        iconFileContent = `export const ${iconName} = '${content}'\n`
+        iconFileContent = `export const ${iconName} = '${removeLineBreaks(content)}'\n`
 
         fs.promises.writeFile(path.resolve(basePath, `${name}.ts`), iconFileContent)
       }
