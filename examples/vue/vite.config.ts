@@ -5,6 +5,11 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+
+  optimizeDeps: {
+    include: ['gdsi/vue'],
+  },
+
   plugins: [
     vue(),
     vueComponent({

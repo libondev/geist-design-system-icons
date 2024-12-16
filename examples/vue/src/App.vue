@@ -1,38 +1,26 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-// import fullIcons from 'gdsi/icons'
-import * as icons from 'gdsi/svg'
+import Alpha from 'gdsi/raw/alpha.svg?raw'
 
-import { AccessibilityIcon } from 'gdsi/vue'
+import { AcronymJsIcon } from 'gdsi/vue'
 
-import { ref } from 'vue'
-
-console.debug('🍿src/App.vue:4/(icons):\n ', icons)
-
-// console.debug('🥑src/App.vue:3/(fullIcons):\n ', fullIcons)
-
-const size = ref('1em')
-
-function setSize() {
-  if (size.value === '1em') {
-    size.value = '5em'
-  }
-  else {
-    size.value = '1em'
-  }
-}
+import { AccessibilityIcon } from 'gdsi/vue/Accessibility.js'
 </script>
 
 <template>
   <h1>Vite + Vue</h1>
 
-  <!-- manual import -->
-  <AccessibilityIcon />
+  <div style="display:flex;gap:1rem">
+    <!-- manual import -->
+    <AcronymJsIcon />
 
-  <!-- auto import -->
-  <IconZeroConfig :width="size" :height="size" />
+    <!-- auto import -->
+    <IconZeroConfig />
 
-  <button @click="setSize">
-    Toggle Size
-  </button>
+    <!-- single import -->
+    <AccessibilityIcon />
+
+    <!-- raw svg -->
+    <span v-html="Alpha" />
+  </div>
 </template>
