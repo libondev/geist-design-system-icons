@@ -35,7 +35,7 @@ jobs:
         with:
           version: 7.13.4
       - name: Install
-        run: pwd && pnpm i
+        run: pwd && cd ./docs && pnpm i
       - name: Build Docs
         run: pwd && pnpm --filter docs build
       - name: Setup Pages
