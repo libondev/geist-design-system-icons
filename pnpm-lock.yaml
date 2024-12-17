@@ -48,6 +48,19 @@ importers:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
 
+  docs:
+    dependencies:
+      gdsi:
+        specifier: '*'
+        version: 1.0.1
+    devDependencies:
+      typescript:
+        specifier: ~5.6.2
+        version: 5.6.3
+      vite:
+        specifier: ^6.0.1
+        version: 6.0.3(@types/node@22.10.2)(tsx@4.19.2)(yaml@2.6.1)
+
   examples/react:
     dependencies:
       gdsi:
@@ -1508,6 +1521,9 @@ packages:
 
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
+
+  gdsi@1.0.1:
+    resolution: {integrity: sha512-uOqtiwaPR7YkOoRWpyS+wud62hAzILNTfeaqT/4UsdObdbohnGIKkAMsZntC0h/mQ4n5hUlQGD/8zvExR+mQYA==}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -3973,6 +3989,8 @@ snapshots:
     optional: true
 
   function-bind@1.1.2: {}
+
+  gdsi@1.0.1: {}
 
   gensync@1.0.0-beta.2: {}
 
