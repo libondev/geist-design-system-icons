@@ -34,8 +34,10 @@ jobs:
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 7.13.4
-      - name: Build Core
-        run: pwd && pnpm --filter docs i && pnpm run build
+      - name: Install
+        run: pwd && pnpm i
+      - name: Build Docs
+        run: pwd && pnpm --filter docs build
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
