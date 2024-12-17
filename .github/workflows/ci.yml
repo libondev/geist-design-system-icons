@@ -33,9 +33,11 @@ jobs:
       - name: Checkout pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 7.13.4
+          version: 9.10.0
       - name: Install
-        run: pwd && cd ./docs && pnpm i
+        run: pwd && pnpm i
+      - name: Build Core
+        run: pwd && pnpm build
       - name: Build Docs
         run: pwd && pnpm --filter docs build
       - name: Setup Pages

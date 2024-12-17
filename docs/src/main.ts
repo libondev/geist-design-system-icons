@@ -10,7 +10,7 @@ const container = document.querySelector<HTMLDivElement>('#app')!
 const iconWrapper = document.createElement('div')
 
 function onFilterChange(event: Event) {
-  const inputValue = (event.target as HTMLInputElement).value
+  const inputValue: string = (event.target as HTMLInputElement).value
 
   if (!inputValue) {
     updateGridItems(iconsNames)
@@ -18,7 +18,7 @@ function onFilterChange(event: Event) {
     return
   }
 
-  const matchIcons = iconsNames.filter((key) => {
+  const matchIcons = iconsNames.filter((key: string) => {
     return key.toLowerCase().includes(inputValue.toLowerCase())
   })
 
