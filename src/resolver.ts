@@ -9,14 +9,14 @@ export interface Options {
   type?: 'svg' | 'vue' | 'react'
 
   /**
-   * @default 'Gsd'
+   * @default 'gds'
    */
   prefix?: string
 }
 
 export default function IconsResolver({
   type = 'svg',
-  prefix = 'Gds',
+  prefix = 'gds',
 }: Options = {}): ComponentResolver {
   const regex = new RegExp(`^${prefix}[A-Z]`)
 

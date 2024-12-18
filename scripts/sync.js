@@ -23,7 +23,6 @@ function processSVG(svg) {
       .replace(/\n/g, '')
       .replace(/\r\n/g, '')
       .replace(/>(\s)+</g, '><')
-      .replace(/style=""/g, '')
       .replace(/var\((--ds-[^,)]+)\)/g, (_, variable) => {
         return `var(${variable},${fallbackColors[variable]})`
       })
@@ -32,7 +31,9 @@ function processSVG(svg) {
           .replace(/\s(data-testid=".*?")/g, '')
           //  if width/height not number, remove it
           .replace(/\s(width|height)="(\D.*?)"/g, '')
+          .replace(/;?color:currentColor;?/g, '')
       })
+      .replace(/style=""/g, '')
 
     return processedSvg
   }
