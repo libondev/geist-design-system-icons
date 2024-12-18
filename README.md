@@ -113,6 +113,45 @@ export default function App() {
 }
 ```
 
+### With unplugin-icons
+```ts
+import GdsiResolver from 'gdsi/resolver'
+import AutoImport from 'unplugin-auto-import/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  plugins: [
+    AutoImport({
+      // ...
+      resolvers: [
+        IconsResolver({
+          // ...
+          prefix: 'I'
+        }),
+        GdsiResolver({
+          type: 'vue', // or 'react'
+          prefix: 'IGds',
+        }),
+      ],
+    }),
+
+    Icons({
+      compiler: 'vue3',
+    }),
+  ]
+})
+```
+
+```html
+<template>
+  <div>
+    <IGdsAccessibility />
+  </div>
+</template>
+```
+
 ### Bundler Optimize
 
 #### Vite
