@@ -1,1 +1,1 @@
-export const LogoVercelIcon = '<svg height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>'
+export const LogoVercelIcon = '<svg stroke-linejoin="round" viewBox="0 0 16 16" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>'
