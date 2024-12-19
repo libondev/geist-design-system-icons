@@ -1,16 +1,16 @@
 :root {
+  --border-color: #424242;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 }
 
 body {
@@ -44,7 +44,7 @@ button {
   flex-wrap: wrap;
   border-width: 1px 0 0 1px;
   border-style: solid;
-  border-color: #ebebeb;
+  border-color: var(--border-color);
 }
 
 .icon-item {
@@ -58,11 +58,15 @@ button {
   box-sizing: border-box;
   border-width: 0 1px 1px 0;
   border-style: solid;
-  border-color: #ebebeb;
+  border-color: var(--border-color);
 }
 
 .icon-item:hover {
-  background: #f2f2f2
+  background: #424242
+}
+
+.icon-item svg {
+  font-size: 18px;
 }
 
 .icon-name {
@@ -78,7 +82,7 @@ button {
   position: relative;
   width: 100%;
   margin-bottom: 1rem;
-  color: #8f8f8f;
+  color: #88888888;
 }
 
 .filter-box svg {
@@ -94,7 +98,8 @@ button {
   padding: 0 1rem;
   padding-left: 40px;
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  background: transparent;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
 }
 
@@ -109,7 +114,13 @@ button {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    --border-color: #ebebeb;
+
+    color: #000;
     background-color: #ffffff;
+  }
+
+  .icon-item:hover {
+    background-color: #f2f2f2
   }
 }
