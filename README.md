@@ -74,6 +74,15 @@ const app = document.querySelector('#app')
 app.innerHTML = AccessibilityIcon
 ```
 
+### Only Single Icon
+
+```ts
+import { AccessibilityIcon } from 'gdsi/react/accessibility'
+
+const app = document.querySelector('#app')
+app.innerHTML = AccessibilityIcon
+```
+
 ### Full Icons
 Need all icons? You can import the full set:
 

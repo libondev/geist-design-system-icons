@@ -8,7 +8,7 @@ import glob from 'fast-glob'
 import cachedIcons from './_cached.json' assert { type: 'json' }
 import metadata from './_metadata.json' assert { type: 'json' }
 
-type SVGMap = Record<string, string>
+type SVGMap = Record<string, { fileName: string, content: string }>
 
 const writeTypes = process.argv.slice(2)
 
@@ -33,11 +33,16 @@ function updateCachedIcons() {
 
   const newContent: SVGMap = Object.fromEntries(
     glob.sync('svg/*.svg', { cwd: process.cwd() }).map((svg) => {
-      const iconName = camelCase(svg.replace(RENAME_REGEX, '$1'), { pascalCase: true })
+      const fileName = svg.replace(RENAME_REGEX, '$1')
+      const iconName = `${camelCase(fileName, { pascalCase: true })}Icon`
 
-      const contents = removeLineBreaks(fs.readFileSync(svg, 'utf-8'))
+      const content = removeLineBreaks(fs.readFileSync(svg, 'utf-8'))
+      console.log({ fileName, iconName })
 
-      return [iconName, contents]
+      return [
+        iconName,
+        { content, fileName },
+      ]
     }),
   )
 
@@ -63,13 +68,11 @@ const transformers = {
       let mainFileContent = ''
       let iconFileContent = ''
 
-      for (const [name, content] of Object.entries(svgMap)) {
-        const iconName = `${name}Icon`
+      for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
+        mainFileContent += `export { ${iconName} } from './${fileName}'\n`
+        iconFileContent = `export const ${iconName} = '${removeLineBreaks(content)}'`
 
-        mainFileContent += `export { ${iconName} } from './${name}'\n`
-        iconFileContent = `export const ${iconName} = '${removeLineBreaks(content)}'\n`
-
-        fs.promises.writeFile(path.resolve(basePath, `${name}.ts`), iconFileContent)
+        fs.promises.writeFile(path.resolve(basePath, `${fileName}.ts`), iconFileContent)
       }
 
       return mainFileContent
@@ -82,8 +85,7 @@ const transformers = {
       let mainFileContent = ''
       let iconFileContent = ''
 
-      for (const [name, content] of Object.entries(svgMap)) {
-        const iconName = `${name}Icon`
+      for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
         const [, attributes, children] = content.match(SVG_REGEX) || []
         const props = attributes?.split(BREAK_PROPS_REGEX)
           .map((attr) => {
@@ -93,13 +95,12 @@ const transformers = {
             return `${camelCase(key)}:"${value}"`
           })
 
-        mainFileContent += `export { ${iconName} } from './${name}'\n`
+        mainFileContent += `export { ${iconName} } from './${fileName}'\n`
         iconFileContent = `import { defineComponent, h } from 'vue'
-
 export const ${iconName} = defineComponent((_,c) => { const $ = h("svg", { innerHTML:'${children}',${props},...c.attrs });return () => $ }, { name:'${iconName}' })
 `
 
-        fs.promises.writeFile(path.resolve(basePath, `${name}.ts`), iconFileContent)
+        fs.promises.writeFile(path.resolve(basePath, `${fileName}.ts`), iconFileContent)
       }
 
       return mainFileContent
@@ -112,8 +113,7 @@ export const ${iconName} = defineComponent((_,c) => { const $ = h("svg", { inner
       let mainFileContent = ''
       let iconFileContent = ''
 
-      for (const [name, content] of Object.entries(svgMap)) {
-        const iconName = `${name}Icon`
+      for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
         const [, attributes, children] = content.match(SVG_REGEX) || []
         const props = attributes?.split(BREAK_PROPS_REGEX)
           .map((attr) => {
@@ -133,13 +133,13 @@ export const ${iconName} = defineComponent((_,c) => { const $ = h("svg", { inner
             return `${camelCase(key)}:"${value}"`
           })
 
-        mainFileContent += `export { ${iconName} } from './${name}'\n`
+        mainFileContent += `export { ${iconName} } from './${fileName}'\n`
         iconFileContent = `import React, { type NamedExoticComponent, type SVGProps } from 'react'
 export const ${iconName}: NamedExoticComponent<SVGProps<SVGSVGElement>> = React.memo(p => React.createElement("svg", { ${props},dangerouslySetInnerHTML:{__html:'${children}'},...p }))
 ${iconName}.displayName = '${iconName}'
 `
 
-        fs.promises.writeFile(path.resolve(basePath, `${name}.ts`), iconFileContent)
+        fs.promises.writeFile(path.resolve(basePath, `${fileName}.ts`), iconFileContent)
       }
 
       return mainFileContent
@@ -164,7 +164,7 @@ async function run(writeType: WriteType, svgMap: SVGMap) {
 ; (async () => {
   const lastModified = isDirectoryDirty('../svg')
 
-  let svgMap: SVGMap = cachedIcons
+  let svgMap = cachedIcons as SVGMap
 
   if (lastModified !== metadata.lastModified) {
     updateMetadata(lastModified)

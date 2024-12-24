@@ -33,16 +33,16 @@
       "default": "./dist/resolver.js"
     },
     "./svg/*": {
-      "types": "./dist/svg/*",
-      "default": "./dist/svg/*"
+      "types": "./dist/svg/*.d.ts",
+      "default": "./dist/svg/*.js"
     },
     "./vue/*": {
-      "types": "./dist/vue/*",
-      "default": "./dist/vue/*"
+      "types": "./dist/vue/*.d.ts",
+      "default": "./dist/vue/*.js"
     },
     "./react/*": {
-      "types": "./dist/react/*",
-      "default": "./dist/react/*"
+      "types": "./dist/react/*.d.ts",
+      "default": "./dist/react/*.js"
     },
     "./*": "./dist/*"
   },

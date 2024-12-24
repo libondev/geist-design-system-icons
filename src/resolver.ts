@@ -9,16 +9,22 @@ export interface Options {
   type?: 'svg' | 'vue' | 'react'
 
   /**
-   * @default 'gds'
+   * @default 'Gds'
    */
   prefix?: string
 }
 
+function kebabCase(key: string) {
+  const result = key.replace(/([A-Z])/g, ' $1').trim()
+  return result.split(' ').join('-').toLowerCase()
+}
+
 export default function IconsResolver({
   type = 'svg',
-  prefix = 'gds',
+  prefix = 'Gds',
 }: Options = {}): ComponentResolver {
   const regex = new RegExp(`^${prefix}[A-Z]`)
+  const prefixLength = prefix.length
 
   return {
     type: 'component',
@@ -26,13 +32,13 @@ export default function IconsResolver({
       if (!regex.test(icon))
         return
 
-      const rawName = icon.replace(prefix, '')
-
+      const rawName = icon.slice(prefixLength)
+      const fileName = kebabCase(rawName)
       const importName = `${rawName}Icon`
 
       return {
         name: importName,
-        from: `${name}/${type}/${rawName}.js`,
+        from: `${name}/${type}/${fileName}`,
       }
     },
   }
