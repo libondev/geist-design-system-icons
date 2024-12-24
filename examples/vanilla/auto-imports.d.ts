@@ -6,6 +6,5 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const GdsAccessibility: typeof import('gdsi/vanilla.js')['AccessibilityIcon']
-  const GdsZeroConfig: typeof import('gdsi/vanilla.js')['ZeroConfigIcon']
+  const GdsZeroConfig: typeof import('gdsi/svg/zero-config')['ZeroConfigIcon']
 }

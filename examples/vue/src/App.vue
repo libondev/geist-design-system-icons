@@ -4,7 +4,7 @@ import { AlphaIcon } from 'gdsi/svg'
 
 import { AcronymJsIcon } from 'gdsi/vue'
 
-import { AccessibilityIcon } from 'gdsi/vue/Accessibility.js'
+import { AccessibilityIcon } from 'gdsi/vue/accessibility'
 </script>
 
 <template>
