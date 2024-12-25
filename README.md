@@ -8,6 +8,7 @@ A community-maintained collection of Geist Design System icons.
 - Full tree-shaking support
 - Works across frameworks (Vue/React/Vanilla JS)
 - Auto-imports components
+- Built-in react `memo` optimization
 - And more...
 
 ## 📦 Installation

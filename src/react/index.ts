@@ -1,3 +1,4 @@
+export { shallowEqual } from './_utils'
 export { AccessibilityUnreadIcon } from './accessibility-unread'
 export { AccessibilityIcon } from './accessibility'
 export { AcronymApiIcon } from './acronym-api'
