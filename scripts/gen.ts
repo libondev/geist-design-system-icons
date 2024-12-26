@@ -113,16 +113,8 @@ export const ${iconName} = defineComponent((_,c) => { const $ = h("svg", { inner
       let mainFileContent = `export { shallowEqual } from './_utils'\n`
       let iconFileContent = ''
 
-      fs.promises.writeFile(path.resolve(basePath, '_utils.ts'), `export const shallowEqual = (prevProps: any, nextProps: any): boolean => {
-  if (
-    (!prevProps || Object.keys(prevProps).length === 0) &&
-    (!nextProps || Object.keys(nextProps).length === 0)
-  ) {
-    return true
-  }
-  return Object.keys(prevProps).length === Object.keys(nextProps).length &&
-    Object.keys(prevProps).every(key => prevProps[key] === nextProps[key])
-}`)
+      fs.promises.writeFile(path.resolve(basePath, '_utils.ts'), `const KEYS_TO_COMPARE = ['className', 'style', 'width', 'height', 'onClick']
+export const shallowEqual = (prevProps: any, nextProps: any): boolean => KEYS_TO_COMPARE.every(k => prevProps[k] === nextProps[k] || (!prevProps[k] && !nextProps[k]))`)
 
       for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
         const [, attributes, children] = content.match(SVG_REGEX) || []

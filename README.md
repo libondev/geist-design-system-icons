@@ -164,7 +164,7 @@ export default defineConfig({
 </template>
 ```
 
-### Bundler Optimize
+### 🍾 Bundler Optimize
 
 #### Vite
 If you are using vite, you can use prebuilt for optimization, this will greatly improve the performance of the first screen you manually import. (If `unplugin-auto-import`|`unplugin-vue-components` is used, it can be ignored.)
