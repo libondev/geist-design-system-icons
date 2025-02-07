@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 
 import glob from 'fast-glob'
 
-import cachedIcons from './_cached.json' assert { type: 'json' }
-import metadata from './_metadata.json' assert { type: 'json' }
+import cachedIcons from './_cached.json' with { type: 'json' }
+import metadata from './_metadata.json' with { type: 'json' }
 
 type SVGMap = Record<string, { fileName: string, content: string }>
 
