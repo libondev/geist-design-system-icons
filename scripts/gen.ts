@@ -37,7 +37,6 @@ function updateCachedIcons() {
       const iconName = `${camelCase(fileName, { pascalCase: true })}Icon`
 
       const content = removeLineBreaks(fs.readFileSync(svg, 'utf-8'))
-      console.log({ fileName, iconName })
 
       return [
         iconName,

@@ -28,9 +28,9 @@ function processSVG(svg) {
       })
       .replace(/<svg\s([^>]*)>/i, (match) => {
         return match
-          .replace(/\s(data-testid=".*?")/g, '')
+          .replace(/\s(data-testid=".*?")/g, ' aria-hidden="true" ')
           //  if width/height not number, remove it
-          .replace(/\s(width|height)="\d+"/g, '$1="1em"')
+          .replace(/\s(width|height)="\d+"/g, ' $1="1em"')
           .replace(/;?color:currentColor;?/g, '')
       })
       .replace(/style=""/g, '')
