@@ -37,16 +37,16 @@ jobs:
       - name: Install
         run: pwd && pnpm i
       - name: Build Core
-        run: pwd && pnpm build
+        run: pwd && pnpm build:lib
       - name: Build Docs
-        run: pwd && pnpm --filter docs build
+        run: pwd && pnpm build:docs
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './docs/dist'
+          path: './packages/docs/dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
