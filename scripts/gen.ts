@@ -91,7 +91,7 @@ const transformers = {
             const [key, ...values] = attr.split('=')
             const value = values.join('=').replace(QUOTE_REGEX, '')
 
-            return `${camelCase(key)}:"${value}"`
+            return `"${key}":"${value}"`
           })
 
         mainFileContent += `export { ${iconName} } from './${fileName}'\n`

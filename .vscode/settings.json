@@ -2,5 +2,10 @@
   "cSpell.words": [
     "gdsi"
   ],
-  "files.insertFinalNewline": false
+  "files.insertFinalNewline": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.addMissingImports.ts": "never"
+  }
 }

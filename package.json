@@ -60,6 +60,7 @@
     "dist"
   ],
   "scripts": {
+    "sync": "node ./scripts/sync.js",
     "gen": "tsx ./scripts/gen.ts svg vue react",
     "build": "vite build",
     "lint": "eslint .",
