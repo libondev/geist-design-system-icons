@@ -36,7 +36,10 @@
       "types": "./dist/svg/*.d.ts",
       "default": "./dist/svg/*.js"
     },
-    "./vue/*": "./dist/vue/*.vue",
+    "./vue/*": {
+      "types": "./dist/vue/index.d.ts",
+      "default": "./dist/vue/*.vue"
+    },
     "./react/*": {
       "types": "./dist/react/*.d.ts",
       "default": "./dist/react/*.js"

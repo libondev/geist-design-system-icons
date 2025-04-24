@@ -81,7 +81,12 @@ const transformers = {
   vue: {
     filepath: 'vue',
     async transform(basePath: string, svgMap: SVGMap) {
-      let mainFileContent = ''
+      let mainFileContent = `declare module 'gdsi/vue/*' {
+  import type { DefineComponent } from 'vue'
+  const component: DefineComponent<{ width?: string, height?: string, fill?: string }>
+  export default component
+}
+`
       let iconFileContent = ''
 
       for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
