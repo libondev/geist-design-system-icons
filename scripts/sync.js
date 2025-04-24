@@ -32,9 +32,9 @@ function processSVG(svg) {
           //  if width/height not number, remove it
           .replace(/\s(width|height)="\d+"/g, ' $1="1em"')
           .replace(/;?color:currentColor;?/g, '')
-          .replace(/\s+/g, ' ')
       })
       .replace(/style=""/g, '')
+      .replace(/\s+/g, ' ')
 
     return processedSvg
   }
