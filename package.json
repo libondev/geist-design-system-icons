@@ -1,7 +1,7 @@
 {
   "name": "gdsi",
   "type": "module",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "Geist design system icons maintained by the community.",
   "author": "Libon <bon.li@outlook.com>",
   "license": "ISC",
