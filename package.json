@@ -36,10 +36,7 @@
       "types": "./dist/svg/*.d.ts",
       "default": "./dist/svg/*.js"
     },
-    "./vue/*": {
-      "types": "./dist/vue/*.d.ts",
-      "default": "./dist/vue/*.js"
-    },
+    "./vue/*": "./dist/vue/*.vue",
     "./react/*": {
       "types": "./dist/react/*.d.ts",
       "default": "./dist/react/*.js"
@@ -62,7 +59,8 @@
   "scripts": {
     "sync": "node ./scripts/sync.js",
     "gen": "tsx ./scripts/gen.ts svg vue react",
-    "build": "vite build",
+    "dev": "unbuild --stub",
+    "build": "unbuild",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -73,12 +71,12 @@
     "cheerio": "^1.0.0",
     "eslint": "^9.16.0",
     "fast-glob": "^3.3.2",
+    "mkdist": "^2.3.0",
     "react": "^18.3.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
+    "unbuild": "^3.5.0",
     "unplugin-vue-components": "^0.27.5",
-    "vite": "^6.0.1",
-    "vite-plugin-dts": "^4.3.0",
     "vue": "^3.5.13"
   }
 }

@@ -57,7 +57,7 @@ function camelCase(str: string, options: { pascalCase: boolean } = { pascalCase:
 }
 
 function removeLineBreaks(str: string) {
-  return str.replace(/\r/g, '').replace(/\n/g, '')
+  return str.replace(/\r\n/g, '').replace(/\r/g, '').replace(/\n/g, '')
 }
 
 const transformers = {
@@ -68,8 +68,8 @@ const transformers = {
       let iconFileContent = ''
 
       for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
-        mainFileContent += `export { ${iconName} } from './${fileName}'\n`
-        iconFileContent = `export const ${iconName} = '${removeLineBreaks(content)}'`
+        mainFileContent += `export { default as ${iconName} } from './${fileName}'\n`
+        iconFileContent = `const icon = '${removeLineBreaks(content)}'\nexport default icon`
 
         fs.promises.writeFile(path.resolve(basePath, `${fileName}.ts`), iconFileContent)
       }
@@ -85,21 +85,10 @@ const transformers = {
       let iconFileContent = ''
 
       for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
-        const [, attributes, children] = content.match(SVG_REGEX) || []
-        const props = attributes?.split(BREAK_PROPS_REGEX)
-          .map((attr) => {
-            const [key, ...values] = attr.split('=')
-            const value = values.join('=').replace(QUOTE_REGEX, '')
+        mainFileContent += `export { default as ${iconName} } from './${fileName}.vue'\n`
+        iconFileContent = `<template>\n  ${content}\n</template>`
 
-            return `"${key}":"${value}"`
-          })
-
-        mainFileContent += `export { ${iconName} } from './${fileName}'\n`
-        iconFileContent = `import { defineComponent, h } from 'vue'
-export const ${iconName} = defineComponent((_,c) => { const $ = h("svg", { innerHTML:'${children}',${props},...c.attrs });return () => $ }, { name:'${iconName}' })
-`
-
-        fs.promises.writeFile(path.resolve(basePath, `${fileName}.ts`), iconFileContent)
+        fs.promises.writeFile(path.resolve(basePath, `${fileName}.vue`), iconFileContent)
       }
 
       return mainFileContent
@@ -135,10 +124,10 @@ export const shallowEqual = (prevProps: any, nextProps: any): boolean => KEYS_TO
             return `${camelCase(key)}:"${value}"`
           })
 
-        mainFileContent += `export { ${iconName} } from './${fileName}'\n`
+        mainFileContent += `export { default as ${iconName} } from './${fileName}'\n`
         iconFileContent = `import React, { type NamedExoticComponent, type SVGProps } from 'react'\nimport { shallowEqual } from './_utils'
-export const ${iconName}: NamedExoticComponent<SVGProps<SVGSVGElement>> = React.memo(p => React.createElement("svg", { ${props},dangerouslySetInnerHTML:{__html:'${children}'},...p }), shallowEqual)
-${iconName}.displayName = '${iconName}'
+const ${iconName}: NamedExoticComponent<SVGProps<SVGSVGElement>> = React.memo(p => React.createElement("svg", { ${props},dangerouslySetInnerHTML:{__html:'${children}'},...p }), shallowEqual)
+${iconName}.displayName = '${iconName}'\nexport default ${iconName}
 `
 
         fs.promises.writeFile(path.resolve(basePath, `${fileName}.ts`), iconFileContent)
@@ -176,4 +165,6 @@ async function run(writeType: WriteType, svgMap: SVGMap) {
   writeTypes.filter(type => type in transformers).forEach((type) => {
     run(type as WriteType, svgMap)
   })
+
+  console.log('Generation completed')
 })()

@@ -67,3 +67,4 @@ async function sync() {
 }
 
 sync()
+console.log('Sync completed')

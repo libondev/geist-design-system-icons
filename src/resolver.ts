@@ -1,5 +1,4 @@
 import type { ComponentResolver } from 'unplugin-vue-components'
-import { name } from '../package.json'
 
 export interface Options {
   /**
@@ -34,11 +33,12 @@ export default function IconsResolver({
 
       const rawName = icon.slice(prefixLength)
       const fileName = kebabCase(rawName)
-      const importName = `${rawName}Icon`
+      const importName = `${prefix}${rawName}`
 
       return {
-        name: importName,
-        from: `${name}/${type}/${fileName}`,
+        name: 'default',
+        as: importName,
+        from: `gdsi/${type}/${fileName}`,
       }
     },
   }

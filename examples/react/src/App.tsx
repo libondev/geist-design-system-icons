@@ -1,6 +1,6 @@
 import { AcronymJsIcon } from 'gdsi/react'
 
-import { AccessibilityIcon } from 'gdsi/react/accessibility'
+import AccessibilityIcon from 'gdsi/react/accessibility'
 
 import { AlphaIcon } from 'gdsi/svg'
 

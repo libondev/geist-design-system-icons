@@ -6,5 +6,5 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const GdsZeroConfig: typeof import('gdsi/svg/zero-config')['ZeroConfigIcon']
+  const GdsZeroConfig: typeof import('gdsi/svg/zero-config')['default']
 }
