@@ -81,12 +81,14 @@ const transformers = {
   vue: {
     filepath: 'vue',
     async transform(basePath: string, svgMap: SVGMap) {
-      let mainFileContent = `declare module 'gdsi/vue/*' {
+      const typesFileContent = `// @ts-nocheck\nexport {}
+declare module 'gdsi/vue/*' {
   import type { DefineComponent } from 'vue'
   const component: DefineComponent<{ width?: string, height?: string, fill?: string }>
   export default component
 }
 `
+      let mainFileContent = ''
       let iconFileContent = ''
 
       for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
@@ -95,6 +97,7 @@ const transformers = {
 
         fs.promises.writeFile(path.resolve(basePath, `${fileName}.vue`), iconFileContent)
       }
+      fs.promises.writeFile(path.resolve(basePath, `vue-sfc.d.ts`), typesFileContent)
 
       return mainFileContent
     },

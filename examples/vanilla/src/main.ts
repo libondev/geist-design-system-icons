@@ -1,4 +1,5 @@
-import { AccessibilityIcon, AcronymJsIcon, AlphaIcon } from 'gdsi/svg'
+import { AccessibilityIcon, AcronymJsIcon } from 'gdsi/svg'
+import AlphaIcon from 'gdsi/svg/alpha'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
