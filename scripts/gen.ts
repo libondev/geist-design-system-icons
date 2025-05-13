@@ -62,7 +62,6 @@ function removeLineBreaks(str: string) {
 
 const transformers = {
   svg: {
-    filepath: 'svg',
     async transform(basePath: string, svgMap: SVGMap) {
       let mainFileContent = ''
       let iconFileContent = ''
@@ -79,9 +78,8 @@ const transformers = {
   },
 
   vue: {
-    filepath: 'vue',
     async transform(basePath: string, svgMap: SVGMap) {
-      const typesFileContent = `// @ts-nocheck\nexport {}
+      const typesFileContent = `/* eslint-disable */\n// @ts-nocheck\nexport {}
 declare module 'gdsi/vue/*' {
   import type { DefineComponent } from 'vue'
   const component: DefineComponent<{ width?: string, height?: string, fill?: string }>
@@ -104,7 +102,6 @@ declare module 'gdsi/vue/*' {
   },
 
   react: {
-    filepath: 'react',
     async transform(basePath: string, svgMap: SVGMap) {
       let mainFileContent = `export { shallowEqual } from './_utils'\n`
       let iconFileContent = ''
@@ -149,13 +146,13 @@ ${iconName}.displayName = '${iconName}'\nexport default ${iconName}
 type WriteType = keyof typeof transformers
 
 async function run(writeType: WriteType, svgMap: SVGMap) {
-  const { filepath, transform } = transformers[writeType]
+  const { transform } = transformers[writeType]
 
-  const basePath = path.resolve(process.cwd(), 'src', filepath)
+  const basePath = path.resolve(process.cwd(), 'packages', writeType, 'src')
 
   const fileContent = await transform(basePath, svgMap)
 
-  const modulePaths = path.resolve(process.cwd(), 'src', `${filepath}${path.sep}index.ts`)
+  const modulePaths = path.resolve(basePath, 'index.ts')
 
   fs.writeFileSync(modulePaths, fileContent)
 }

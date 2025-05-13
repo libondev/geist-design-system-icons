@@ -4,9 +4,49 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@types/react':
+      specifier: ^18.3.1
+      version: 18.3.16
+    fast-glob:
+      specifier: ^3.3.2
+      version: 3.3.2
+    mkdist:
+      specifier: ^2.3.0
+      version: 2.3.0
+    react:
+      specifier: ^18.3.1
+      version: 18.3.1
+    typescript:
+      specifier: ^5.7.2
+      version: 5.7.2
+    unbuild:
+      specifier: ^3.5.0
+      version: 3.5.0
+    unplugin-auto-import:
+      specifier: ^0.19.0
+      version: 0.19.0
+    unplugin-vue-components:
+      specifier: ^0.28.0
+      version: 0.28.0
+    vue:
+      specifier: ^3.5.13
+      version: 3.5.13
+
 importers:
 
   .:
+    dependencies:
+      '@gdsi/react':
+        specifier: workspace:*
+        version: link:packages/react
+      '@gdsi/svg':
+        specifier: workspace:*
+        version: link:packages/svg
+      '@gdsi/vue':
+        specifier: workspace:*
+        version: link:packages/vue
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.11.2
@@ -14,9 +54,6 @@ importers:
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
-      '@types/react':
-        specifier: ^18.3.1
-        version: 18.3.16
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
@@ -24,29 +61,20 @@ importers:
         specifier: ^9.16.0
         version: 9.16.0(jiti@2.4.2)
       fast-glob:
-        specifier: ^3.3.2
+        specifier: 'catalog:'
         version: 3.3.2
       mkdist:
-        specifier: ^2.3.0
+        specifier: 'catalog:'
         version: 2.3.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
       typescript:
-        specifier: ^5.7.2
+        specifier: 'catalog:'
         version: 5.7.2
       unbuild:
-        specifier: ^3.5.0
+        specifier: 'catalog:'
         version: 3.5.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
-      unplugin-vue-components:
-        specifier: ^0.27.5
-        version: 0.27.5(@babel/parser@7.26.3)(rollup@4.40.0)(vue@3.5.13(typescript@5.7.2))
-      vue:
-        specifier: ^3.5.13
-        version: 3.5.13(typescript@5.7.2)
 
   docs:
     dependencies:
@@ -63,9 +91,9 @@ importers:
 
   examples/react:
     dependencies:
-      gdsi:
+      '@gdsi/react':
         specifier: workspace:*
-        version: link:../..
+        version: link:../../packages/react
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -94,9 +122,9 @@ importers:
 
   examples/vanilla:
     devDependencies:
-      gdsi:
+      '@gdsi/svg':
         specifier: workspace:*
-        version: link:../..
+        version: link:../../packages/svg
       typescript:
         specifier: ~5.6.2
         version: 5.6.3
@@ -109,16 +137,16 @@ importers:
 
   examples/vue:
     dependencies:
+      '@gdsi/vue':
+        specifier: workspace:*
+        version: link:../../packages/vue
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.6.3)
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
         version: 5.2.1(vite@6.0.3(@types/node@22.10.2)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
-      gdsi:
-        specifier: workspace:*
-        version: link:../..
       typescript:
         specifier: ~5.6.2
         version: 5.6.3
@@ -131,6 +159,54 @@ importers:
       vue-tsc:
         specifier: ^2.1.10
         version: 2.1.10(typescript@5.6.3)
+
+  packages/react:
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 18.3.16
+      mkdist:
+        specifier: 'catalog:'
+        version: 2.3.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      react:
+        specifier: 'catalog:'
+        version: 18.3.1
+      unbuild:
+        specifier: 'catalog:'
+        version: 3.5.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      unplugin-vue-components:
+        specifier: 'catalog:'
+        version: 0.28.0(@babel/parser@7.26.3)(rollup@4.40.0)(vue@3.5.13(typescript@5.7.2))
+
+  packages/svg:
+    devDependencies:
+      fast-glob:
+        specifier: 'catalog:'
+        version: 3.3.2
+      mkdist:
+        specifier: 'catalog:'
+        version: 2.3.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      unbuild:
+        specifier: 'catalog:'
+        version: 3.5.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      unplugin-auto-import:
+        specifier: 'catalog:'
+        version: 0.19.0(rollup@4.40.0)
+
+  packages/vue:
+    devDependencies:
+      mkdist:
+        specifier: 'catalog:'
+        version: 2.3.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      unbuild:
+        specifier: 'catalog:'
+        version: 3.5.0(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      unplugin-vue-components:
+        specifier: 'catalog:'
+        version: 0.28.0(@babel/parser@7.26.3)(rollup@4.40.0)(vue@3.5.13(typescript@5.7.2))
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.13(typescript@5.7.2)
 
 packages:
 
@@ -2905,6 +2981,19 @@ packages:
       '@nuxt/kit':
         optional: true
 
+  unplugin-vue-components@0.28.0:
+    resolution: {integrity: sha512-jiTGtJ3JsRFBjgvyilfrX7yUoGKScFgbdNw+6p6kEXU+Spf/rhxzgvdfuMcvhCcLmflB/dY3pGQshYBVGOUx7Q==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@babel/parser': ^7.15.8
+      '@nuxt/kit': ^3.2.2
+      vue: 2 || 3
+    peerDependenciesMeta:
+      '@babel/parser':
+        optional: true
+      '@nuxt/kit':
+        optional: true
+
   unplugin@1.16.0:
     resolution: {integrity: sha512-5liCNPuJW8dqh3+DM6uNM2EI3MLLpCKp/KY+9pB5M2S2SR2qvvDHhKgBOaTWEbZTAws3CXfB0rKTIolWKL05VQ==}
     engines: {node: '>=14.0.0'}
@@ -3619,7 +3708,7 @@ snapshots:
 
   '@rollup/pluginutils@5.1.4(rollup@4.40.0)':
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
       estree-walker: 2.0.2
       picomatch: 4.0.2
     optionalDependencies:
@@ -3947,8 +4036,8 @@ snapshots:
       '@vue/compiler-ssr': 3.5.13
       '@vue/shared': 3.5.13
       estree-walker: 2.0.2
-      magic-string: 0.30.15
-      postcss: 8.4.49
+      magic-string: 0.30.17
+      postcss: 8.5.3
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.13':
@@ -4097,8 +4186,8 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.24.2
-      caniuse-lite: 1.0.30001688
+      browserslist: 4.24.4
+      caniuse-lite: 1.0.30001715
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -4228,7 +4317,7 @@ snapshots:
 
   cssnano-preset-default@7.0.6(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       css-declaration-sorter: 7.2.0(postcss@8.5.3)
       cssnano-utils: 5.0.0(postcss@8.5.3)
       postcss: 8.5.3
@@ -4439,7 +4528,7 @@ snapshots:
   eslint-compat-utils@0.5.1(eslint@9.16.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.16.0(jiti@2.4.2)
-      semver: 7.6.3
+      semver: 7.7.1
 
   eslint-compat-utils@0.6.4(eslint@9.16.0(jiti@2.4.2)):
     dependencies:
@@ -4882,7 +4971,7 @@ snapshots:
 
   is-reference@1.2.1:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
 
   isexe@2.0.0: {}
 
@@ -5458,7 +5547,7 @@ snapshots:
 
   postcss-colormin@7.0.2(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       caniuse-api: 3.0.0
       colord: 2.9.3
       postcss: 8.5.3
@@ -5466,7 +5555,7 @@ snapshots:
 
   postcss-convert-values@7.0.4(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       postcss: 8.5.3
       postcss-value-parser: 4.2.0
 
@@ -5495,7 +5584,7 @@ snapshots:
 
   postcss-merge-rules@7.0.4(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.0(postcss@8.5.3)
       postcss: 8.5.3
@@ -5515,7 +5604,7 @@ snapshots:
 
   postcss-minify-params@7.0.2(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       cssnano-utils: 5.0.0(postcss@8.5.3)
       postcss: 8.5.3
       postcss-value-parser: 4.2.0
@@ -5562,7 +5651,7 @@ snapshots:
 
   postcss-normalize-unicode@7.0.2(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       postcss: 8.5.3
       postcss-value-parser: 4.2.0
 
@@ -5584,7 +5673,7 @@ snapshots:
 
   postcss-reduce-initial@7.0.2(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       caniuse-api: 3.0.0
       postcss: 8.5.3
 
@@ -5834,7 +5923,7 @@ snapshots:
 
   stylehacks@7.0.4(postcss@8.5.3):
     dependencies:
-      browserslist: 4.24.2
+      browserslist: 4.24.4
       postcss: 8.5.3
       postcss-selector-parser: 6.1.2
 
@@ -6016,18 +6105,18 @@ snapshots:
       - rollup
       - supports-color
 
-  unplugin-vue-components@0.27.5(@babel/parser@7.26.3)(rollup@4.40.0)(vue@3.5.13(typescript@5.7.2)):
+  unplugin-vue-components@0.28.0(@babel/parser@7.26.3)(rollup@4.40.0)(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       '@antfu/utils': 0.7.10
-      '@rollup/pluginutils': 5.1.3(rollup@4.40.0)
+      '@rollup/pluginutils': 5.1.4(rollup@4.40.0)
       chokidar: 3.6.0
       debug: 4.4.0
       fast-glob: 3.3.2
       local-pkg: 0.5.1
-      magic-string: 0.30.15
+      magic-string: 0.30.17
       minimatch: 9.0.5
-      mlly: 1.7.3
-      unplugin: 1.16.0
+      mlly: 1.7.4
+      unplugin: 2.1.0
       vue: 3.5.13(typescript@5.7.2)
     optionalDependencies:
       '@babel/parser': 7.26.3

@@ -32,18 +32,6 @@
       "types": "./dist/resolver.d.ts",
       "default": "./dist/resolver.js"
     },
-    "./svg/*": {
-      "types": "./dist/svg/*.d.ts",
-      "default": "./dist/svg/*.js"
-    },
-    "./vue/*": {
-      "types": "./dist/vue/vue-sfc.d.ts",
-      "default": "./dist/vue/*.vue"
-    },
-    "./react/*": {
-      "types": "./dist/react/*.d.ts",
-      "default": "./dist/react/*.js"
-    },
     "./*": "./dist/*"
   },
   "main": "dist/svg/index.js",
@@ -60,26 +48,35 @@
     "dist"
   ],
   "scripts": {
-    "sync": "node ./scripts/sync.js",
+    "sync": "tsx ./scripts/sync.ts",
     "gen": "tsx ./scripts/gen.ts svg vue react",
-    "dev": "unbuild --stub",
-    "build": "unbuild",
+    "dev:core": "unbuild --stub",
+    "build:core": "unbuild",
+    "build:lib": "pnpm run build:svg && pnpm run build:vue && pnpm run build:react",
+    "build:svg": "pnpm --filter @gdsi/svg build",
+    "build:vue": "pnpm --filter @gdsi/vue build",
+    "build:react": "pnpm --filter @gdsi/react build",
+    "publish": "pnpm run publish:svg && pnpm run publish:vue && pnpm run publish:react",
+    "publish:svg": "pnpm --filter @gdsi/svg publish",
+    "publish:vue": "pnpm --filter @gdsi/vue publish",
+    "publish:react": "pnpm --filter @gdsi/react publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@gdsi/react": "workspace:*",
+    "@gdsi/svg": "workspace:*",
+    "@gdsi/vue": "workspace:*"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",
     "@types/node": "^22.10.2",
-    "@types/react": "^18.3.1",
     "cheerio": "^1.0.0",
     "eslint": "^9.16.0",
-    "fast-glob": "^3.3.2",
-    "mkdist": "^2.3.0",
-    "react": "^18.3.1",
+    "fast-glob": "catalog:",
+    "mkdist": "catalog:",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "unbuild": "^3.5.0",
-    "unplugin-vue-components": "^0.27.5",
-    "vue": "^3.5.13"
+    "typescript": "catalog:",
+    "unbuild": "catalog:"
   }
 }

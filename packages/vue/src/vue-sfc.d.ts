@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @ts-nocheck
 export {}
 declare module 'gdsi/vue/*' {

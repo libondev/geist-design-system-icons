@@ -17,14 +17,14 @@ const fallbackColors = {
   '--ds-background-100': '#ffffff',
 }
 
-function processSVG(svg) {
+function processSVG(svg: string) {
   try {
     const processedSvg = svg
       .replace(/\n/g, '')
       .replace(/\r\n/g, '')
       .replace(/>(\s)+</g, '><')
       .replace(/var\((--ds-[^,)]+)\)/g, (_, variable) => {
-        return `var(${variable},${fallbackColors[variable]})`
+        return `var(${variable},${fallbackColors[variable as keyof typeof fallbackColors]})`
       })
       .replace(/<svg\s([^>]*)>/i, (match) => {
         return match

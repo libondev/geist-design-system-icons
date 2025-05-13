@@ -1,5 +1,5 @@
+import IconResolver from '@gdsi/vue/resolver'
 import vue from '@vitejs/plugin-vue'
-import IconResolver from 'gdsi/resolver'
 import vueComponent from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
@@ -7,7 +7,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
 
   optimizeDeps: {
-    include: ['gdsi/vue'],
+    include: ['@gdsi/vue'],
   },
 
   plugins: [
@@ -16,7 +16,6 @@ export default defineConfig({
       dts: true,
       resolvers: [
         IconResolver({
-          type: 'vue',
           prefix: 'Icon',
         }),
       ],

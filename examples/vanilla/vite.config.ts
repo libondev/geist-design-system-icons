@@ -1,4 +1,4 @@
-import IconResolver from 'gdsi/resolver'
+import IconResolver from '@gdsi/svg/resolver'
 import autoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 

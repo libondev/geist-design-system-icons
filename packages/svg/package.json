@@ -1,0 +1,45 @@
+{
+  "name": "@gdsi/svg",
+  "type": "module",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./resolver": {
+      "types": "./dist/resolver.d.ts",
+      "default": "./dist/resolver.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild && pnpm run simplify-types",
+    "simplify-types": "node ./scripts/simplify-types.js",
+    "publish": "pnpm publish",
+    "prepublishOnly": "unbuild"
+  },
+  "devDependencies": {
+    "fast-glob": "catalog:",
+    "mkdist": "catalog:",
+    "unbuild": "catalog:"
+  }
+}

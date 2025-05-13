@@ -1,11 +1,5 @@
 export interface Options {
   /**
-   * What type of components are expected
-   * @default 'svg'
-   */
-  type?: 'svg' | 'vue' | 'react'
-
-  /**
    * @default 'Gds'
    */
   prefix?: string
@@ -16,10 +10,7 @@ function kebabCase(key: string) {
   return result.split(' ').join('-').toLowerCase()
 }
 
-export default function IconsResolver({
-  type = 'svg',
-  prefix = 'Gds',
-}: Options = {}) {
+export default function IconsResolver({ prefix = 'Gds' }: Options = {}) {
   const regex = new RegExp(`^${prefix}[A-Z]`)
   const prefixLength = prefix.length
 
@@ -36,8 +27,8 @@ export default function IconsResolver({
       return {
         name: 'default',
         as: importName,
-        from: `@gdsi/${type}/${fileName}`,
+        from: `@gdsi/vue/${fileName}`,
       }
     },
-  }
+  } as const
 }

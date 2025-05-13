@@ -1,0 +1,47 @@
+{
+  "name": "@gdsi/vue",
+  "type": "module",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/vue-sfc.d.ts",
+      "default": "./dist/*.vue"
+    },
+    "./resolver": {
+      "types": "./dist/resolver.d.ts",
+      "default": "./dist/resolver.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "publish": "pnpm publish",
+    "prepublishOnly": "unbuild"
+  },
+  "peerDependencies": {
+    "vue": "*"
+  },
+  "devDependencies": {
+    "mkdist": "catalog:",
+    "unbuild": "catalog:",
+    "vue": "catalog:"
+  }
+}
