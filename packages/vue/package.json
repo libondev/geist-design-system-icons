@@ -2,6 +2,8 @@
   "name": "@gdsi/vue",
   "type": "module",
   "version": "1.0.0",
+  "description": "Vue components for GDSI",
+  "author": "libondev <bon.li@outlook.com>",
   "license": "MIT",
   "sideEffects": false,
   "exports": {

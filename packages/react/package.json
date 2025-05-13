@@ -2,6 +2,8 @@
   "name": "@gdsi/react",
   "type": "module",
   "version": "1.0.0",
+  "description": "React components for GDSI",
+  "author": "libondev <bon.li@outlook.com>",
   "license": "MIT",
   "sideEffects": false,
   "exports": {
