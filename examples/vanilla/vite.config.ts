@@ -11,4 +11,8 @@ export default defineConfig({
       ],
     }),
   ],
+
+  optimizeDeps: {
+    include: ['@gdsi/svg'],
+  },
 })

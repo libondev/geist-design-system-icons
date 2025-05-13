@@ -1,5 +1,5 @@
-import { AccessibilityIcon, AcronymJsIcon } from 'gdsi/svg'
-import AlphaIcon from 'gdsi/svg/alpha'
+import { AccessibilityIcon } from '@gdsi/svg'
+import AcronymJsIcon from '@gdsi/svg/acronym-js'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -9,7 +9,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       ${AcronymJsIcon}
       ${GdsZeroConfig}
       ${AccessibilityIcon}
-      ${AlphaIcon}
     </div>
   </div>
 `

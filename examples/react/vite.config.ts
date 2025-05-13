@@ -25,6 +25,6 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['gdsi/react'],
+    include: ['@gdsi/react'],
   },
 })
