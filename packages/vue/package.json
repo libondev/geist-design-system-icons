@@ -5,6 +5,14 @@
   "description": "Vue components for GDSI",
   "author": "libondev <bon.li@outlook.com>",
   "license": "MIT",
+  "homepage": "https://github.com/libondev/gdsi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/libondev/gdsi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/libondev/gdsi/issues"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
