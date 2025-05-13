@@ -25,16 +25,16 @@
   "sideEffects": false,
   "exports": {
     "./svg": {
-      "types": "./dist/svg/index.d.ts",
-      "default": "./dist/svg/index.js"
+      "types": "./dist/svg.d.ts",
+      "default": "./dist/svg.js"
     },
     "./vue": {
-      "types": "./dist/vue/index.d.ts",
-      "default": "./dist/vue/index.js"
+      "types": "./dist/vue.d.ts",
+      "default": "./dist/vue.js"
     },
     "./react": {
-      "types": "./dist/react/index.d.ts",
-      "default": "./dist/react/index.js"
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
     },
     "./resolver": {
       "types": "./dist/resolver.d.ts",
@@ -42,8 +42,8 @@
     },
     "./*": "./dist/*"
   },
-  "main": "dist/svg/index.js",
-  "types": "./dist/svg/index.d.ts",
+  "main": "dist/svg.js",
+  "types": "./dist/svg.d.ts",
   "typesVersions": {
     "*": {
       "*": [
@@ -68,7 +68,8 @@
     "publish:vue": "pnpm --filter @gdsicon/vue publish",
     "publish:react": "pnpm --filter @gdsicon/react publish",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm run build:core"
   },
   "dependencies": {
     "@gdsicon/react": "workspace:*",
