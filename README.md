@@ -11,11 +11,23 @@ A community-maintained collection of Geist Design System icons.
 - And more...
 
 ## 📦 Installation
+
+Since 3.0, the adaptation of different language frameworks has been split into corresponding subpackages. We strongly recommend that you install the package corresponding to the language framework instead of this package.
+
+So you can install the following packages:
+
 ```sh
-npm install gdsi
-# or with pnpm
-pnpm add gdsi
+# vue2 | 3
+pnpm add @gdsi/vue
+
+# react
+pnpm add @gdsi/react
+
+# vanilla.js
+pnpm add @gdsi/svg
 ```
+
+You can still install this package, but this document is only for 3.0.
 
 ## 🚀 Quick Start
 
@@ -27,7 +39,10 @@ The easiest way is to use auto-imports:
 > 💡 Remember to add `components.d.ts` / `auto-imports.d.ts` to your `tsconfig.json` includes
 
 ```ts
-import IconResolver from 'gdsi/resolver'
+import IconResolver from '@gdsi/vue/resolver'
+// react use: import IconResolver from '@gdsi/vue/resolver'
+// vanilla use: import IconResolver from '@gdsi/svg/resolver'
+
 import vueComponent from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
@@ -36,12 +51,6 @@ export default defineConfig({
     vueComponent({
       resolvers: [
         IconResolver({
-          /**
-           * import type
-           * @type {'svg' | 'vue' | 'react'}
-           * @defaults 'svg'
-           */
-          type: 'vue',
           /**
            * auto import prefix
            * @defaults 'Gds'
@@ -67,7 +76,7 @@ Then use it in your components:
 ### Vanilla JavaScript
 
 ```ts
-import { AccessibilityIcon } from 'gdsi/svg'
+import { AccessibilityIcon } from '@gdsi/svg'
 
 const app = document.querySelector('#app')
 
@@ -77,7 +86,7 @@ app.innerHTML = AccessibilityIcon
 ### Only Single Icon
 
 ```ts
-import { AccessibilityIcon } from 'gdsi/react/accessibility'
+import AccessibilityIcon from '@gdsi/react/accessibility'
 
 const app = document.querySelector('#app')
 app.innerHTML = AccessibilityIcon
@@ -88,7 +97,7 @@ Need all icons? You can import the full set:
 
 ```ts
 // Note: This method doesn't support tree-shaking
-import * as icons from 'gdsi/svg'
+import * as icons from '@gdsi/svg'
 
 console.log(icons) // { "AccessibilityIcon": "<svg height=\"16\" stroke-linejoin=\"round\" ..." }
 ```
@@ -99,7 +108,7 @@ console.log(icons) // { "AccessibilityIcon": "<svg height=\"16\" stroke-linejoin
 
 ```html
 <script setup>
-import { AccessibilityIcon } from 'gdsi/vue'
+import { AccessibilityIcon } from '@gdsi/vue'
 </script>
 
 <template>
@@ -111,7 +120,7 @@ import { AccessibilityIcon } from 'gdsi/vue'
 
 ### React
 ```tsx
-import { AccessibilityIcon } from 'gdsi/react'
+import { AccessibilityIcon } from '@gdsi/react'
 
 export default function App() {
   return (
@@ -124,7 +133,7 @@ export default function App() {
 
 ### With unplugin-icons
 ```ts
-import GdsiResolver from 'gdsi/resolver'
+import GdsiResolver from '@gdsi/vue/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
@@ -140,7 +149,6 @@ export default defineConfig({
           prefix: 'I'
         }),
         GdsiResolver({
-          type: 'vue', // or 'react'
           prefix: 'IGds',
         }),
       ],
@@ -159,22 +167,6 @@ export default defineConfig({
     <IGdsAccessibility />
   </div>
 </template>
-```
-
-### 🍾 Bundler Optimize
-
-#### Vite
-If you are using vite, you can use prebuilt for optimization, this will greatly improve the performance of the first screen you manually import. (If `unplugin-auto-import`|`unplugin-vue-components` is used, it can be ignored.)
-
-```ts
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  // ...
-  optimizeDeps: {
-    include: ['gdsi/react'], // or ['gdsi/vue'] | ['gdsi/svg']
-  },
-})
 ```
 
 enjoy~
