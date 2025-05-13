@@ -3,9 +3,6 @@ A community-maintained collection of Geist Design System icons.
 
 [Online Preview](https://libondev.github.io/geist-design-system-icons/)
 
-> [!IMPORTANT]
-> This project is created out of personal appreciation for the `Geist Design System` and is non-commercial in nature. If you have any concerns, please reach out and I'll address them promptly.
-
 ## ✨ Features
 - Full tree-shaking support
 - Works across frameworks (Vue/React/Vanilla JS)
