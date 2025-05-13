@@ -40,7 +40,6 @@
   "scripts": {
     "dev": "unbuild --stub",
     "build": "unbuild",
-    "publish": "pnpm publish",
     "prepublishOnly": "unbuild"
   },
   "peerDependencies": {

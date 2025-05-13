@@ -41,7 +41,6 @@
     "dev": "unbuild --stub",
     "build": "unbuild && pnpm run simplify-types",
     "simplify-types": "node ./scripts/simplify-types.js",
-    "publish": "pnpm publish",
     "prepublishOnly": "unbuild"
   },
   "devDependencies": {
