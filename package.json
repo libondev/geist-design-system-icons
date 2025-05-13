@@ -64,7 +64,6 @@
     "build:svg": "pnpm --filter @gdsicon/svg build",
     "build:vue": "pnpm --filter @gdsicon/vue build",
     "build:react": "pnpm --filter @gdsicon/react build",
-    "publish": "pnpm run publish:svg && pnpm run publish:vue && pnpm run publish:react",
     "publish:svg": "pnpm --filter @gdsicon/svg publish",
     "publish:vue": "pnpm --filter @gdsicon/vue publish",
     "publish:react": "pnpm --filter @gdsicon/react publish",
