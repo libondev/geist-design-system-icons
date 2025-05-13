@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gdsi/vue": "workspace:*",
+    "@gdsicon/vue": "workspace:*",
     "vue": "catalog:"
   },
   "devDependencies": {

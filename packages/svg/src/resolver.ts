@@ -27,7 +27,7 @@ export default function IconsResolver({ prefix = 'Gds' }: Options = {}) {
       return {
         name: 'default',
         as: importName,
-        from: `@gdsi/svg/${fileName}`,
+        from: `@gdsicon/svg/${fileName}`,
       }
     },
   } as const

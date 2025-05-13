@@ -1,6 +1,6 @@
-import { AcronymJsIcon } from '@gdsi/react'
+import { AcronymJsIcon } from '@gdsicon/react'
 
-import AccessibilityIcon from '@gdsi/react/accessibility'
+import AccessibilityIcon from '@gdsicon/react/accessibility'
 
 function App() {
   return (

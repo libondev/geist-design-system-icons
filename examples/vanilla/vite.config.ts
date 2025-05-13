@@ -1,4 +1,4 @@
-import IconResolver from '@gdsi/svg/resolver'
+import IconResolver from '@gdsicon/svg/resolver'
 import autoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 
@@ -13,6 +13,6 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['@gdsi/svg'],
+    include: ['@gdsicon/svg'],
   },
 })

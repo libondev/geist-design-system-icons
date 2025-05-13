@@ -1,8 +1,8 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-import { AcronymJsIcon } from '@gdsi/vue'
+import { AcronymJsIcon } from '@gdsicon/vue'
 
-import AccessibilityIcon from '@gdsi/vue/accessibility'
+import AccessibilityIcon from '@gdsicon/vue/accessibility'
 </script>
 
 <template>

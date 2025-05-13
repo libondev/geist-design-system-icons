@@ -53,20 +53,20 @@
     "dev:core": "unbuild --stub",
     "build:core": "unbuild",
     "build:lib": "pnpm run build:svg && pnpm run build:vue && pnpm run build:react",
-    "build:svg": "pnpm --filter @gdsi/svg build",
-    "build:vue": "pnpm --filter @gdsi/vue build",
-    "build:react": "pnpm --filter @gdsi/react build",
+    "build:svg": "pnpm --filter @gdsicon/svg build",
+    "build:vue": "pnpm --filter @gdsicon/vue build",
+    "build:react": "pnpm --filter @gdsicon/react build",
     "publish": "pnpm run publish:svg && pnpm run publish:vue && pnpm run publish:react",
-    "publish:svg": "pnpm --filter @gdsi/svg publish",
-    "publish:vue": "pnpm --filter @gdsi/vue publish",
-    "publish:react": "pnpm --filter @gdsi/react publish",
+    "publish:svg": "pnpm --filter @gdsicon/svg publish",
+    "publish:vue": "pnpm --filter @gdsicon/vue publish",
+    "publish:react": "pnpm --filter @gdsicon/react publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@gdsi/react": "workspace:*",
-    "@gdsi/svg": "workspace:*",
-    "@gdsi/vue": "workspace:*"
+    "@gdsicon/react": "workspace:*",
+    "@gdsicon/svg": "workspace:*",
+    "@gdsicon/vue": "workspace:*"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",

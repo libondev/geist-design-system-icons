@@ -18,13 +18,13 @@ So you can install the following packages:
 
 ```sh
 # vue2 | 3
-pnpm add @gdsi/vue
+pnpm add @gdsicon/vue
 
 # react
-pnpm add @gdsi/react
+pnpm add @gdsicon/react
 
 # vanilla.js
-pnpm add @gdsi/svg
+pnpm add @gdsicon/svg
 ```
 
 You can still install this package, but this document is only for 3.0.
@@ -39,9 +39,9 @@ The easiest way is to use auto-imports:
 > 💡 Remember to add `components.d.ts` / `auto-imports.d.ts` to your `tsconfig.json` includes
 
 ```ts
-import IconResolver from '@gdsi/vue/resolver'
-// react use: import IconResolver from '@gdsi/vue/resolver'
-// vanilla use: import IconResolver from '@gdsi/svg/resolver'
+import IconResolver from '@gdsicon/vue/resolver'
+// react use: import IconResolver from '@gdsicon/vue/resolver'
+// vanilla use: import IconResolver from '@gdsicon/svg/resolver'
 
 import vueComponent from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
@@ -76,7 +76,7 @@ Then use it in your components:
 ### Vanilla JavaScript
 
 ```ts
-import { AccessibilityIcon } from '@gdsi/svg'
+import { AccessibilityIcon } from '@gdsicon/svg'
 
 const app = document.querySelector('#app')
 
@@ -86,7 +86,7 @@ app.innerHTML = AccessibilityIcon
 ### Only Single Icon
 
 ```ts
-import AccessibilityIcon from '@gdsi/react/accessibility'
+import AccessibilityIcon from '@gdsicon/react/accessibility'
 
 const app = document.querySelector('#app')
 app.innerHTML = AccessibilityIcon
@@ -97,7 +97,7 @@ Need all icons? You can import the full set:
 
 ```ts
 // Note: This method doesn't support tree-shaking
-import * as icons from '@gdsi/svg'
+import * as icons from '@gdsicon/svg'
 
 console.log(icons) // { "AccessibilityIcon": "<svg height=\"16\" stroke-linejoin=\"round\" ..." }
 ```
@@ -108,7 +108,7 @@ console.log(icons) // { "AccessibilityIcon": "<svg height=\"16\" stroke-linejoin
 
 ```html
 <script setup>
-import { AccessibilityIcon } from '@gdsi/vue'
+import { AccessibilityIcon } from '@gdsicon/vue'
 </script>
 
 <template>
@@ -120,7 +120,7 @@ import { AccessibilityIcon } from '@gdsi/vue'
 
 ### React
 ```tsx
-import { AccessibilityIcon } from '@gdsi/react'
+import { AccessibilityIcon } from '@gdsicon/react'
 
 export default function App() {
   return (
@@ -133,7 +133,7 @@ export default function App() {
 
 ### With unplugin-icons
 ```ts
-import GdsiResolver from '@gdsi/vue/resolver'
+import GdsiResolver from '@gdsicon/vue/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'

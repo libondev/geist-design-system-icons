@@ -1,4 +1,4 @@
-import * as Icons from 'gdsi/svg'
+import * as Icons from '@gdsicon/svg'
 
 import './style.css'
 

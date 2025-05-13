@@ -6,7 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const IconZeroConfig: typeof import('@gdsi/react/zero-config')['default']
+  const IconZeroConfig: typeof import('@gdsicon/react/zero-config')['default']
   const ZeroConfigIcon: typeof import('gdsi/react/zero-config')['default']
   const ZeroConfigIconAS: typeof import('gdsi/react/zero-config')['ZeroConfigIcon']
 }

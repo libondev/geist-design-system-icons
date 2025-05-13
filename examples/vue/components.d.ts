@@ -7,6 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    IconZeroConfig: typeof import('@gdsi/vue/zero-config')['default']
+    IconZeroConfig: typeof import('@gdsicon/vue/zero-config')['default']
   }
 }

@@ -80,7 +80,7 @@ const transformers = {
   vue: {
     async transform(basePath: string, svgMap: SVGMap) {
       const typesFileContent = `/* eslint-disable */\n// @ts-nocheck\nexport {}
-declare module 'gdsi/vue/*' {
+declare module '@gdsicon/vue/*' {
   import type { DefineComponent } from 'vue'
   const component: DefineComponent<{ width?: string, height?: string, fill?: string }>
   export default component

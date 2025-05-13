@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "gdsi": "workspace:*"
+    "@gdsicon/svg": "workspace:*"
   },
   "devDependencies": {
     "typescript": "~5.6.2",

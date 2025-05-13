@@ -1,1 +1,1 @@
-export * from '@gdsi/react'
+export * from '@gdsicon/react'

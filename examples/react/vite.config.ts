@@ -1,4 +1,4 @@
-import IconResolver from '@gdsi/react/resolver'
+import IconResolver from '@gdsicon/react/resolver'
 import react from '@vitejs/plugin-react'
 import autoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
@@ -25,6 +25,6 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['@gdsi/react'],
+    include: ['@gdsicon/react'],
   },
 })

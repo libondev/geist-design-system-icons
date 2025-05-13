@@ -36,7 +36,7 @@ export default function IconsResolver({
       return {
         name: 'default',
         as: importName,
-        from: `@gdsi/${type}/${fileName}`,
+        from: `@gdsicon/${type}/${fileName}`,
       }
     },
   }

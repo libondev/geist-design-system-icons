@@ -1,1 +1,1 @@
-export * from '@gdsi/svg'
+export * from '@gdsicon/svg'

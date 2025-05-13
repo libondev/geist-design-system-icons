@@ -1,1 +1,1 @@
-export * from '@gdsi/vue'
+export * from '@gdsicon/vue'

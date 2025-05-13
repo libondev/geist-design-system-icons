@@ -1,4 +1,4 @@
-import IconResolver from '@gdsi/vue/resolver'
+import IconResolver from '@gdsicon/vue/resolver'
 import vue from '@vitejs/plugin-vue'
 import vueComponent from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
@@ -7,7 +7,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
 
   optimizeDeps: {
-    include: ['@gdsi/vue'],
+    include: ['@gdsicon/vue'],
   },
 
   plugins: [

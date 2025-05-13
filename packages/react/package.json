@@ -1,5 +1,5 @@
 {
-  "name": "@gdsi/react",
+  "name": "@gdsicon/react",
   "type": "module",
   "version": "1.0.0",
   "description": "React components for GDSI",
@@ -38,7 +38,6 @@
     "dist"
   ],
   "scripts": {
-    "dev": "unbuild --stub",
     "build": "unbuild",
     "prepublishOnly": "unbuild"
   },
