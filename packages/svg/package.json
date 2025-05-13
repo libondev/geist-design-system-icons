@@ -38,9 +38,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild && pnpm run simplify-types",
+    "build": "unbuild",
     "simplify-types": "node ./scripts/simplify-types.js",
-    "prepublishOnly": "unbuild"
+    "prepublishOnly": "unbuild && pnpm run simplify-types"
   },
   "devDependencies": {
     "fast-glob": "catalog:",
