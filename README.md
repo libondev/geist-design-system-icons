@@ -169,4 +169,21 @@ export default defineConfig({
 </template>
 ```
 
+## FAQ
+
+### Unknown file extension
+> TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".vue" for xxx/node_modules/@gdsicon/vue/dist/accessibility-unread.vue
+
+This situation usually occurs in vue projects. Because it is a directly exported sfc file, the node can't recognize this file, so it only needs to change the file import path to a specific file name.
+
+e.g.
+```js
+import { CopyIcon } from '@gdsicon/vue'
+```
+
+Change to:
+```js
+import CopyIcon from '@gdsicon/vue/copy'
+```
+
 enjoy~
