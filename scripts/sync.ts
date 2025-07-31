@@ -24,7 +24,7 @@ function processSVG(svg: string) {
       .replace(/\r\n/g, '')
       .replace(/>(\s)+</g, '><')
       .replace(/var\((--ds-[^,)]+)\)/g, (_, variable) => {
-        return `var(${variable},${fallbackColors[variable as keyof typeof fallbackColors]})`
+        return `var(${variable.replace('--ds', '--color')},${fallbackColors[variable as keyof typeof fallbackColors]})`
       })
       .replace(/<svg\s([^>]*)>/i, (match) => {
         return match
@@ -49,8 +49,14 @@ async function sync() {
 
   const $ = cheerio.load(rawHtml)
 
-  $('.grid_gridSystemLazyContent__qAuyX .flex.h-28.w-full').each((_, el) => {
-    const name = $(el).find('.text_wrapper__i87JK').text()
+  const wrapperSelector = '.grid-module__4pDFEa__grid'
+
+  const items = $(`${wrapperSelector} .flex.h-28.w-full`)
+
+  console.log(items.length)
+
+  items.each((_, el) => {
+    const name = $(el).find('p').text()
     const rawSvg = $(el).find('svg').prop('outerHTML')
 
     if (!rawSvg) {
