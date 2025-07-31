@@ -1,7 +1,7 @@
 {
   "name": "gdsi",
   "type": "module",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Geist design system icons maintained by the community.",
   "author": "Libon <bon.li@outlook.com>",
   "license": "MIT",
@@ -59,7 +59,8 @@
     "sync": "tsx ./scripts/sync.ts",
     "gen": "tsx ./scripts/gen.ts svg vue react",
     "dev:core": "unbuild --stub",
-    "dev:docs": "pnpm --filter docs dev",
+    "dev": "pnpm --filter docs dev",
+    "build": "pnpm --filter docs build",
     "build:core": "unbuild",
     "build:lib": "pnpm run build:svg && pnpm run build:vue && pnpm run build:react",
     "build:svg": "pnpm --filter @gdsicon/svg build",
