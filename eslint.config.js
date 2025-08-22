@@ -6,8 +6,8 @@ export default antfu({
     'shims/*',
     'playground/*',
     'node_modules/*',
-    'src/svg/*',
-    'src/vue/*',
-    'src/react/*',
+    'packages/svg/**/*.ts',
+    'packages/vue/**/*.ts',
+    'packages/react/**/*.ts',
   ],
 })
