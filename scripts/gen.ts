@@ -91,7 +91,7 @@ declare module '@gdsicon/vue/*' {
 
       for (const [iconName, { fileName, content }] of Object.entries(svgMap)) {
         mainFileContent += `export { default as ${iconName} } from './${fileName}.vue'\n`
-        iconFileContent = `<template functional>\n  ${content}\n</template>`
+        iconFileContent = `<template>\n  ${content}\n</template>`
 
         fs.promises.writeFile(path.resolve(basePath, `${fileName}.vue`), iconFileContent)
       }
