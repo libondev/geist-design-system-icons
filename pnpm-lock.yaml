@@ -28,6 +28,11 @@ catalogs:
       specifier: ^3.5.13
       version: 3.5.13
 
+patchedDependencies:
+  '@vue/compiler-sfc':
+    hash: mhcnl55kk5am2mph5rzjm65eua
+    path: patches/@vue__compiler-sfc.patch
+
 importers:
 
   .:
@@ -44,7 +49,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.11.2
-        version: 3.16.0(@typescript-eslint/utils@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
+        version: 3.16.0(@typescript-eslint/utils@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       '@types/node':
         specifier: ^22.10.2
         version: 22.15.17
@@ -3091,7 +3096,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@antfu/eslint-config@3.16.0(@typescript-eslint/utils@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
+  '@antfu/eslint-config@3.16.0(@typescript-eslint/utils@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.9.1
@@ -3119,7 +3124,7 @@ snapshots:
       eslint-plugin-unused-imports: 4.1.4(@typescript-eslint/eslint-plugin@8.32.1(@typescript-eslint/parser@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))
       eslint-plugin-vue: 9.33.0(eslint@9.26.0(jiti@2.4.2))
       eslint-plugin-yml: 1.18.0(eslint@9.26.0(jiti@2.4.2))
-      eslint-processor-vue-blocks: 1.0.0(@vue/compiler-sfc@3.5.13)(eslint@9.26.0(jiti@2.4.2))
+      eslint-processor-vue-blocks: 1.0.0(@vue/compiler-sfc@3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua))(eslint@9.26.0(jiti@2.4.2))
       globals: 15.15.0
       jsonc-eslint-parser: 2.4.0
       local-pkg: 1.1.1
@@ -3872,7 +3877,7 @@ snapshots:
       '@vue/compiler-core': 3.5.13
       '@vue/shared': 3.5.13
 
-  '@vue/compiler-sfc@3.5.13':
+  '@vue/compiler-sfc@3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua)':
     dependencies:
       '@babel/parser': 7.27.2
       '@vue/compiler-core': 3.5.13
@@ -4568,9 +4573,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-processor-vue-blocks@1.0.0(@vue/compiler-sfc@3.5.13)(eslint@9.26.0(jiti@2.4.2)):
+  eslint-processor-vue-blocks@1.0.0(@vue/compiler-sfc@3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua))(eslint@9.26.0(jiti@2.4.2)):
     dependencies:
-      '@vue/compiler-sfc': 3.5.13
+      '@vue/compiler-sfc': 3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua)
       eslint: 9.26.0(jiti@2.4.2)
 
   eslint-scope@7.2.2:
@@ -6262,7 +6267,7 @@ snapshots:
   vue@3.5.13(typescript@5.6.3):
     dependencies:
       '@vue/compiler-dom': 3.5.13
-      '@vue/compiler-sfc': 3.5.13
+      '@vue/compiler-sfc': 3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua)
       '@vue/runtime-dom': 3.5.13
       '@vue/server-renderer': 3.5.13(vue@3.5.13(typescript@5.6.3))
       '@vue/shared': 3.5.13
@@ -6272,7 +6277,7 @@ snapshots:
   vue@3.5.13(typescript@5.8.3):
     dependencies:
       '@vue/compiler-dom': 3.5.13
-      '@vue/compiler-sfc': 3.5.13
+      '@vue/compiler-sfc': 3.5.13(patch_hash=mhcnl55kk5am2mph5rzjm65eua)
       '@vue/runtime-dom': 3.5.13
       '@vue/server-renderer': 3.5.13(vue@3.5.13(typescript@5.8.3))
       '@vue/shared': 3.5.13

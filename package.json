@@ -88,5 +88,10 @@
     "tsx": "^4.19.2",
     "typescript": "catalog:",
     "unbuild": "catalog:"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@vue/compiler-sfc": "patches/@vue__compiler-sfc.patch"
+    }
   }
 }
