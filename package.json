@@ -79,13 +79,13 @@
     "@gdsicon/vue": "workspace:*"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.11.2",
-    "@types/node": "^22.10.2",
-    "cheerio": "^1.0.0",
-    "eslint": "^9.16.0",
+    "@antfu/eslint-config": "^3.16.0",
+    "@types/node": "^22.17.2",
+    "cheerio": "^1.1.2",
+    "eslint": "^9.33.0",
     "fast-glob": "catalog:",
     "mkdist": "catalog:",
-    "tsx": "^4.19.2",
+    "tsx": "^4.20.4",
     "typescript": "catalog:",
     "unbuild": "catalog:"
   },
